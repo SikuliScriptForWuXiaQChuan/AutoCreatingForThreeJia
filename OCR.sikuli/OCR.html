@@ -1,0 +1,306 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }
+
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>OCR.sikuli</h2> <a href="OCR.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">def</span> reset(a, b):
+    regLeft = <span class="skw">find</span>(<img src="1380292721591.png" />)
+    regRight = <span class="skw">find</span>(<img src="1380292736191.png" />)
+    newX = regLeft.getX() + regLeft.getW()
+    textReg = Region(newX, regLeft.getY(), regRight.getX() - newX, regLeft.getH())
+    s = textReg.text()
+    <span class="kw">print</span>(<span class="str">'origin s:%s'</span> % (s))
+    s1 = s.replace(<span class="str">"."</span>,<span class="str">""</span>)
+    s2 = s1.replace(<span class="str">" "</span>,<span class="str">""</span>)
+    s3 = filter(onlyascii, s2)
+    <span class="kw">print</span>(<span class="str">'s:%s, s1:%s, s2:%s, s3:%s'</span> % (s, s1, s2, s3))
+    <span class="skw">click</span>(<img src="1380293789145.png" />)
+    <span class="skw">wait</span>(<span class="dig">3</span>)
+    <span class="skw">type</span>(s3)
+    <span class="skw">wait</span>(<span class="dig">3</span>)
+    <span class="kw">if</span> exists(<img src="1380293204363.png" />,<span class="dig">3</span>):
+        <span class="skw">click</span>(<img src="1380293204363.png" />)
+        <span class="skw">wait</span>(<img src="1380294123754.png" />)
+        <span class="skw">click</span>(<img src="1380294123754.png" />)
+    <span class="kw">else</span>:
+        returnTopMenu()
+        gotorest()
+
+<span class="kw">def</span> onlyascii(char):
+    <span class="kw">if</span> ord(char) &lt; <span class="dig">48</span> <span class="kw">or</span> ord(char) &gt; <span class="dig">127</span>: <span class="kw">return</span> <span class="str">''</span>
+    <span class="kw">else</span>: <span class="kw">return</span> char
+
+<span class="kw">def</span> failCondition():
+    <span class="kw">if</span> exists(<img src="1380298064898.png" />,<span class="dig">3</span>) == None:
+        returnTopMenu()
+        gotoRest()
+
+<span class="kw">def</span> judgePeople():
+    <span class="kw">if</span> exists(<img src="1380295688803.png" />):
+        s=<span class="str">"LiHuan"</span>
+        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
+        <span class="kw">return</span> s
+    <span class="kw">elif</span> exists(<img src="1380295744094.png" />):
+        s=<span class="str">"WanChunGeo"</span>
+        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
+        <span class="kw">return</span> s
+    <span class="kw">elif</span> exists(<img src="1380295814271.png" />):
+        s=<span class="str">"GenGeoChin"</span>
+        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
+        <span class="kw">return</span> s
+    <span class="kw">elif</span> exists(<img src="1380295886966.png" />):
+        s=<span class="str">"IKouChen"</span>
+        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
+        <span class="kw">return</span> s
+    <span class="kw">elif</span> exists(<img src="1380295952501.png" />):
+        s=<span class="str">"TonLau"</span>
+        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
+        <span class="kw">return</span> s
+    <span class="kw">elif</span> exists(<img src="1380296000327.png" />):
+        s=<span class="str">"IanKou"</span>
+        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
+        <span class="kw">return</span> s
+    <span class="kw">elif</span> exists(<img src="1380296025439.png" />):
+        s=<span class="str">"WuIChi"</span>
+        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
+        <span class="kw">return</span> s
+    <span class="kw">elif</span> exists(<img src="1380296113406.png" />):
+        s=<span class="str">"ShiFunBuBai"</span>
+        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
+        <span class="kw">return</span> s
+    <span class="kw">elif</span> exists(<img src="1380296376446.png" />):
+        s=<span class="str">"LuCuLian"</span>
+        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
+        <span class="kw">return</span> s
+    <span class="kw">elif</span> exists(<img src="1380296428781.png" />):
+        s=<span class="str">"LinHuChun"</span>
+        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
+        <span class="kw">return</span> s
+    <span class="kw">else</span>:
+        s=<span class="str">"NoMan"</span>
+        <span class="kw">print</span>(<span class="str">'Not a man I want!'</span>)
+        <span class="kw">return</span> s
+
+<span class="kw">def</span> gotoRest():
+    <span class="skw">click</span>(<img src="1380297823894.png" />)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">click</span>(<img src="1380297843385.png" />)
+    <span class="skw">wait</span>(<span class="dig">3</span>)
+    reset(f_left, f_right)
+    failCondition()
+
+<span class="kw">def</span> returnTopMenu():
+    <span class="kw">while</span> exists(<img src="1380302243814.png" />) == None:
+        <span class="kw">print</span>(<span class="str">'back to upper menu'</span>)
+        <span class="kw">if</span> exists(<img src="1380340686533.png" />) == None:
+            <span class="kw">if</span> clickXToBack():
+                <span class="skw">wait</span>(<span class="dig">3</span>)
+                <span class="kw">continue</span>
+        <span class="kw">if</span> exists(<img src="1380298499215.png" />):
+            <span class="skw">click</span>(<img src="1380298499215.png" />)
+            <span class="kw">continue</span>
+        <span class="kw">elif</span> exists(<img src="1380299511425.png" />):
+            <span class="skw">click</span>(<img src="1380299511425.png" />)
+            <span class="kw">continue</span>
+        <span class="kw">elif</span> exists(<img src="1380298994787.png" />):
+            <span class="skw">click</span>(<img src="1380298994787.png" />)
+            <span class="kw">continue</span>
+        <span class="kw">elif</span> exists(<img src="1380301410695.png" />):
+            <span class="skw">click</span>(<img src="1380301410695.png" />)
+            <span class="kw">continue</span>
+        <span class="kw">elif</span> exists(<img src="1380301164310.png" />):
+            <span class="skw">click</span>(<img src="1380301201924.png" />)
+            <span class="kw">continue</span>
+    <span class="kw">return</span>
+
+<span class="kw">def</span> clickXToBack():
+    rValue = False
+    <span class="kw">while</span> exists(<img src="1380341000249.png" />,<span class="dig">5</span>):
+        rValue = True
+        initList = findAll(<img src="1380341000249.png" />)
+        newList = sorted(initList, key=<span class="kw">lambda</span> obj: obj.getY(), reverse=True)
+        total = len(list(newList))
+        <span class="kw">print</span>(<span class="str">'# of X2: %i'</span> % (total))
+        <span class="skw">click</span>(newList[<span class="dig">0</span>])
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+
+    <span class="kw">return</span> rValue
+
+<span class="kw">def</span> fight():
+    <span class="skw">click</span>(<img src="1380298355974.png" />)
+    <span class="skw">wait</span>(<img src="1380298396543.png" />,<span class="dig">60</span>)
+    <span class="kw">return</span>
+
+<span class="kw">def</span> ChanAinFight():
+    <span class="skw">wait</span>(<img src="1380298304591.png" />)
+    <span class="skw">click</span>(<img src="1380298304591.png" />)
+    fight()
+    <span class="kw">return</span>
+<span class="kw">def</span> firstStudent():
+    <span class="skw">click</span>(<img src="1380298626344.png" />)
+    <span class="skw">wait</span>(<img src="1380300452850.png" />)
+    regFirst=<span class="skw">find</span>(<img src="1380300452850.png" />)
+
+    <span class="skw">click</span>(regFirst.<span class="skw">find</span>(<img src="1380298650993.png" />))
+    <span class="kw">if</span> exists(<img src="1380301410695.png" />):
+        <span class="skw">click</span>(<img src="1380301410695.png" />)
+    <span class="kw">if</span> exists(<img src="1380305068556.png" />):
+        <span class="skw">click</span>(<img src="1380305068556.png" />)
+    <span class="skw">wait</span>(<span class="dig">3</span>)
+    <span class="kw">return</span>
+
+<span class="kw">def</span> buildFormat():
+    <span class="skw">click</span>(<img src="1380298820327.png" />)
+    <span class="skw">wait</span>(<img src="1380298835059.png" />)
+    <span class="skw">click</span>(<img src="1380298835059.png" />)
+    <span class="skw">wait</span>(<img src="1380298867375.png" />)
+    <span class="skw">click</span>(<img src="1380298867375.png" />)
+    returnTopMenu()
+    <span class="kw">return</span>
+<span class="kw">def</span> equip():
+    <span class="skw">click</span>(<img src="1380299051344.png" />)
+    <span class="skw">wait</span>(<img src="1380299108748.png" />)
+    <span class="skw">click</span>(<img src="1380299108748.png" />)
+    <span class="skw">wait</span>(<img src="1380299129006.png" />)
+    <span class="skw">click</span>(<img src="1380299129006.png" />)
+    <span class="skw">wait</span>(<img src="1380299152850.png" />)
+    <span class="skw">click</span>(<img src="1380299152850.png" />)
+    returnTopMenu()
+    <span class="kw">return</span>
+
+<span class="kw">def</span> package():
+    <span class="skw">wait</span>(<img src="1380300948729.png" />)
+    <span class="skw">click</span>(<img src="1380300948729.png" />)
+
+    <span class="skw">wait</span>(<img src="1380299226850.png" />)
+    <span class="skw">click</span>(<img src="1380299226850.png" />)
+    <span class="skw">wait</span>(<img src="1380299243852.png" />)
+    <span class="skw">click</span>(<img src="1380299243852.png" />)
+    returnTopMenu()
+    <span class="kw">return</span>
+
+<span class="kw">def</span> pickup100People():
+    <span class="skw">click</span>(<img src="1380299590104.png" />)
+    <span class="skw">wait</span>(<img src="1380299604350.png" />)
+    <span class="skw">click</span>(<img src="1380299604350.png" />)
+    <span class="skw">wait</span>(<img src="1380299636431.png" />)
+    <span class="skw">click</span>(<img src="1380299636431.png" />)
+    <span class="skw">wait</span>(<span class="dig">3</span>)
+    <span class="kw">if</span> exists(<img src="1380382370695.png" />):
+        s = judgePeople()
+    <span class="kw">else</span>:
+        s = <span class="str">"NoMan"</span>
+    <span class="kw">return</span> s
+
+f_left = <img src="1380292721591.png" />
+f_right = <img src="1380292736191.png" />
+
+s_left = <img src="1380293437259.png" />
+s_right = <img src="1380293992157.png" />
+setAutoWaitTimeout(<span class="dig">10</span>)
+openApp(<span class="str">"BlueStacks"</span>)
+<span class="skw">wait</span>(<span class="dig">3</span>)
+<span class="cmt">################################################enter Game
+</span><span class="kw">def</span> runChoose():
+    <span class="kw">while</span> <span class="dig">1</span>:
+<span class="cmt">#        click("1380298064898.png")
+</span><span class="cmt">#        wait("1380298227453.png",20)
+</span>        <span class="skw">click</span>(<img src="1380298227453.png" />)
+        <span class="skw">wait</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(<img src="1380298278558.png" />)
+        ChanAinFight()
+        <span class="skw">wait</span>(<img src="1380337327356.png" />)
+        <span class="skw">click</span>(<img src="1380337327356.png" />)
+        returnTopMenu()
+        firstStudent()
+        buildFormat()
+        ChanAinFight()
+        <span class="skw">wait</span>(<img src="1380337327356.png" />)
+        <span class="skw">click</span>(<img src="1380337327356.png" />)
+        <span class="skw">wait</span>(<img src="1380340309707.png" />)
+        <span class="skw">click</span>(<img src="1380340309707.png" />)
+        returnTopMenu()
+        equip()
+        package()
+        ChanAinFight()
+        returnTopMenu()
+        s=pickup100People()
+        <span class="kw">if</span> s==<span class="str">"NoMan"</span>:
+            clickXToBack()
+            gotoRest()
+        <span class="kw">else</span>:
+            <span class="skw">popup</span>(<span class="str">"find people:%s"</span> % (s))
+runChoose()
+<span class="cmt">#failCondition()
+</span><span class="cmt">#s=judgePeople()
+</span><span class="cmt">#popup('s %s' % ())</span>
+</pre>
+</body>
+</html>

@@ -70,9 +70,15 @@
 <h2>OCR.sikuli</h2> <a href="OCR.zip">(Download this script)</a>
 </div>
 <pre class="sikuli-code">
-<span class="kw">def</span> reset(a, b):
-    regLeft = <span class="skw">find</span>(<img src="1380292721591.png" />)
-    regRight = <span class="skw">find</span>(<img src="1380292736191.png" />)
+<span class="kw">def</span> leftRegion():
+    <span class="kw">return</span> Region(myRegion.getX(), myRegion.getY(), myRegion.getW() / <span class="dig">2</span>, myRegion.getH())
+
+<span class="kw">def</span> rightUpRegion():
+    <span class="kw">return</span> Region(myRegion.getX() + (myRegion.getW() / <span class="dig">2</span>), myRegion.getY(), myRegion.getW() / <span class="dig">2</span>, myRegion.getH()/<span class="dig">2</span>)
+
+<span class="kw">def</span> reset():
+    regLeft = myRegion.<span class="skw">find</span>(<img src="1380292721591.png" />)
+    regRight = myRegion.<span class="skw">find</span>(<img src="1380292736191.png" />)
     newX = regLeft.getX() + regLeft.getW()
     textReg = Region(newX, regLeft.getY(), regRight.getX() - newX, regLeft.getH())
     s = textReg.text()
@@ -81,14 +87,14 @@
     s2 = s1.replace(<span class="str">" "</span>,<span class="str">""</span>)
     s3 = filter(onlyascii, s2)
     <span class="kw">print</span>(<span class="str">'s:%s, s1:%s, s2:%s, s3:%s'</span> % (s, s1, s2, s3))
-    <span class="skw">click</span>(<img src="1380293789145.png" />)
-    <span class="skw">wait</span>(<span class="dig">3</span>)
-    <span class="skw">type</span>(s3)
-    <span class="skw">wait</span>(<span class="dig">3</span>)
-    <span class="kw">if</span> exists(<img src="1380293204363.png" />,<span class="dig">3</span>):
-        <span class="skw">click</span>(<img src="1380293204363.png" />)
-        <span class="skw">wait</span>(<img src="1380294123754.png" />)
-        <span class="skw">click</span>(<img src="1380294123754.png" />)
+    myRegion.<span class="skw">click</span>(<img src="1380293789145.png" />)
+    myRegion.<span class="skw">wait</span>(<span class="dig">3</span>)
+    myRegion.<span class="skw">type</span>(s3)
+    myRegion.<span class="skw">wait</span>(<span class="dig">3</span>)
+    <span class="kw">if</span> myRegion.exists(<img src="1380293204363.png" />,<span class="dig">10</span>):
+        myRegion.<span class="skw">click</span>(<img src="1380293204363.png" />)
+        myRegion.<span class="skw">wait</span>(<img src="1380294123754.png" />)
+        myRegion.<span class="skw">click</span>(<img src="1380294123754.png" />)
     <span class="kw">else</span>:
         returnTopMenu()
         gotorest()
@@ -103,44 +109,49 @@
         gotoRest()
 
 <span class="kw">def</span> judgePeople():
-    <span class="kw">if</span> exists(<img src="1380295688803.png" />):
+    myLeftRegion = leftRegion()
+    <span class="kw">if</span> myLeftRegion.exists(Pattern(<img src="1380295688803.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"LiHuan"</span>
         <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
         <span class="kw">return</span> s
-    <span class="kw">elif</span> exists(<img src="1380295744094.png" />):
+    <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380295744094.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"WanChunGeo"</span>
         <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
         <span class="kw">return</span> s
-    <span class="kw">elif</span> exists(<img src="1380295814271.png" />):
+    <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380295814271.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"GenGeoChin"</span>
         <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
         <span class="kw">return</span> s
-    <span class="kw">elif</span> exists(<img src="1380295886966.png" />):
+    <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380295886966.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"IKouChen"</span>
         <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
         <span class="kw">return</span> s
-    <span class="kw">elif</span> exists(<img src="1380295952501.png" />):
+    <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380295952501.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"TonLau"</span>
         <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
         <span class="kw">return</span> s
-    <span class="kw">elif</span> exists(<img src="1380296000327.png" />):
+    <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380296000327.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"IanKou"</span>
         <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
         <span class="kw">return</span> s
-    <span class="kw">elif</span> exists(<img src="1380296025439.png" />):
+    <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380296025439.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"WuIChi"</span>
         <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
         <span class="kw">return</span> s
-    <span class="kw">elif</span> exists(<img src="1380296113406.png" />):
+    <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380296113406.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"ShiFunBuBai"</span>
         <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
         <span class="kw">return</span> s
-    <span class="kw">elif</span> exists(<img src="1380296376446.png" />):
+    <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380296376446.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"LuCuLian"</span>
         <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
         <span class="kw">return</span> s
-    <span class="kw">elif</span> exists(<img src="1380296428781.png" />):
+    <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380296428781.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"LinHuChun"</span>
+        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
+        <span class="kw">return</span> s
+    <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380555446088.png" />).similar(<span class="dig">0.95</span>)):
+        s=<span class="str">"MoonPrincess"</span>
         <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
         <span class="kw">return</span> s
     <span class="kw">else</span>:
@@ -149,155 +160,169 @@
         <span class="kw">return</span> s
 
 <span class="kw">def</span> gotoRest():
-    <span class="skw">click</span>(<img src="1380297823894.png" />)
-    <span class="skw">wait</span>(<span class="dig">1</span>)
-    <span class="skw">click</span>(<img src="1380297843385.png" />)
-    <span class="skw">wait</span>(<span class="dig">3</span>)
-    reset(f_left, f_right)
+    myRegion.<span class="skw">click</span>(<img src="1380297823894.png" />)
+    myRegion.<span class="skw">wait</span>(<span class="dig">1</span>)
+    myRegion.<span class="skw">click</span>(<img src="1380297843385.png" />)
+    myRegion.<span class="skw">wait</span>(<span class="dig">3</span>)
+    reset()
+    myRegion.<span class="skw">wait</span>(<span class="dig">3</span>)
     failCondition()
 
 <span class="kw">def</span> returnTopMenu():
-    <span class="kw">while</span> exists(<img src="1380302243814.png" />) == None:
+    <span class="kw">while</span> myRegion.exists(<img src="1380302243814.png" />) == None:
         <span class="kw">print</span>(<span class="str">'back to upper menu'</span>)
-        <span class="kw">if</span> exists(<img src="1380340686533.png" />) == None:
-            <span class="kw">if</span> clickXToBack():
-                <span class="skw">wait</span>(<span class="dig">3</span>)
-                <span class="kw">continue</span>
-        <span class="kw">if</span> exists(<img src="1380298499215.png" />):
-            <span class="skw">click</span>(<img src="1380298499215.png" />)
+
+        <span class="kw">if</span> clickXToBack(myRegion):
+            myRegion.<span class="skw">wait</span>(<span class="dig">3</span>)
             <span class="kw">continue</span>
-        <span class="kw">elif</span> exists(<img src="1380299511425.png" />):
-            <span class="skw">click</span>(<img src="1380299511425.png" />)
-            <span class="kw">continue</span>
-        <span class="kw">elif</span> exists(<img src="1380298994787.png" />):
-            <span class="skw">click</span>(<img src="1380298994787.png" />)
-            <span class="kw">continue</span>
-        <span class="kw">elif</span> exists(<img src="1380301410695.png" />):
-            <span class="skw">click</span>(<img src="1380301410695.png" />)
-            <span class="kw">continue</span>
-        <span class="kw">elif</span> exists(<img src="1380301164310.png" />):
-            <span class="skw">click</span>(<img src="1380301201924.png" />)
-            <span class="kw">continue</span>
+        <span class="kw">else</span>:
+            <span class="kw">break</span>
+    myRegion.<span class="skw">wait</span>(<span class="dig">1</span>)
     <span class="kw">return</span>
 
-<span class="kw">def</span> clickXToBack():
-    rValue = False
-    <span class="kw">while</span> exists(<img src="1380341000249.png" />,<span class="dig">5</span>):
+<span class="kw">def</span> clickXToBack(appRegion):
+    <span class="kw">while</span> True:
+        rValue = False
+        x1 = []
+        x2 = []
+        allArray = []
+        targetRegion =  rightUpRegion()
+        <span class="kw">if</span> targetRegion.exists(<img src="1380553164626.png" />):
+            x1 = targetRegion.findAll(<img src="1380553164626.png" />)
+            allArray += x1
+            <span class="kw">print</span>(<span class="str">'1'</span>)
+        <span class="kw">if</span> targetRegion.exists(<img src="1380341000249.png" />):
+            x2 = targetRegion.findAll(<img src="1380341000249.png" />)
+            allArray += x2
+            <span class="kw">print</span>(<span class="str">'2'</span>)
+        <span class="kw">if</span> <span class="kw">not</span> allArray:
+            <span class="kw">return</span> rValue
         rValue = True
-        initList = findAll(<img src="1380341000249.png" />)
-        newList = sorted(initList, key=<span class="kw">lambda</span> obj: obj.getY(), reverse=True)
+        newList = sorted(allArray, key=<span class="kw">lambda</span> obj: obj.getX())
+        <span class="kw">print</span>(<span class="str">'3'</span>)
         total = len(list(newList))
-        <span class="kw">print</span>(<span class="str">'# of X2: %i'</span> % (total))
-        <span class="skw">click</span>(newList[<span class="dig">0</span>])
-        <span class="skw">wait</span>(<span class="dig">1</span>)
-
+        targetRegion.<span class="skw">click</span>(newList[<span class="dig">0</span>])
+        targetRegion.<span class="skw">wait</span>(<span class="dig">3</span>)
     <span class="kw">return</span> rValue
 
 <span class="kw">def</span> fight():
-    <span class="skw">click</span>(<img src="1380298355974.png" />)
-    <span class="skw">wait</span>(<img src="1380298396543.png" />,<span class="dig">60</span>)
+    myRegion.<span class="skw">click</span>(<img src="1380298355974.png" />)
+    myRegion.<span class="skw">wait</span>(<img src="1380298396543.png" />,<span class="dig">60</span>)
     <span class="kw">return</span>
 
 <span class="kw">def</span> ChanAinFight():
-    <span class="skw">wait</span>(<img src="1380298304591.png" />)
-    <span class="skw">click</span>(<img src="1380298304591.png" />)
+    myRegion.<span class="skw">wait</span>(Pattern(<img src="1380562324428.png" />).similar(<span class="dig">0.50</span>),<span class="dig">30</span>)
+    myRegion.<span class="skw">click</span>(Pattern(<img src="1380562324428.png" />).similar(<span class="dig">0.50</span>))
     fight()
     <span class="kw">return</span>
 <span class="kw">def</span> firstStudent():
-    <span class="skw">click</span>(<img src="1380298626344.png" />)
-    <span class="skw">wait</span>(<img src="1380300452850.png" />)
-    regFirst=<span class="skw">find</span>(<img src="1380300452850.png" />)
+    myRegion.<span class="skw">click</span>(<img src="1380298626344.png" />)
+    myRegion.<span class="skw">wait</span>(<img src="1380300452850.png" />)
+    regFirst=myRegion.<span class="skw">find</span>(<img src="1380300452850.png" />)
 
     <span class="skw">click</span>(regFirst.<span class="skw">find</span>(<img src="1380298650993.png" />))
-    <span class="kw">if</span> exists(<img src="1380301410695.png" />):
-        <span class="skw">click</span>(<img src="1380301410695.png" />)
-    <span class="kw">if</span> exists(<img src="1380305068556.png" />):
-        <span class="skw">click</span>(<img src="1380305068556.png" />)
+    <span class="kw">if</span> myRegion.exists(<img src="1380301410695.png" />, <span class="dig">10</span>):
+        myRegion.<span class="skw">click</span>(<img src="1380301410695.png" />)
+    <span class="kw">if</span> myRegion.exists(<img src="1380305068556.png" />, <span class="dig">10</span>):
+        myRegion.<span class="skw">click</span>(<img src="1380305068556.png" />)
     <span class="skw">wait</span>(<span class="dig">3</span>)
     <span class="kw">return</span>
 
 <span class="kw">def</span> buildFormat():
-    <span class="skw">click</span>(<img src="1380298820327.png" />)
-    <span class="skw">wait</span>(<img src="1380298835059.png" />)
-    <span class="skw">click</span>(<img src="1380298835059.png" />)
-    <span class="skw">wait</span>(<img src="1380298867375.png" />)
-    <span class="skw">click</span>(<img src="1380298867375.png" />)
+    <span class="skw">wait</span>(<img src="1380298820327.png" />, <span class="dig">10</span>)
+    myRegion.<span class="skw">click</span>(<img src="1380298820327.png" />)
+    myRegion.<span class="skw">wait</span>(<img src="1380298835059.png" />)
+    myRegion.<span class="skw">click</span>(<img src="1380298835059.png" />)
+    myRegion.<span class="skw">wait</span>(<img src="1380298867375.png" />)
+    myRegion.<span class="skw">click</span>(<img src="1380298867375.png" />)
     returnTopMenu()
     <span class="kw">return</span>
 <span class="kw">def</span> equip():
-    <span class="skw">click</span>(<img src="1380299051344.png" />)
-    <span class="skw">wait</span>(<img src="1380299108748.png" />)
-    <span class="skw">click</span>(<img src="1380299108748.png" />)
-    <span class="skw">wait</span>(<img src="1380299129006.png" />)
-    <span class="skw">click</span>(<img src="1380299129006.png" />)
-    <span class="skw">wait</span>(<img src="1380299152850.png" />)
-    <span class="skw">click</span>(<img src="1380299152850.png" />)
+    myRegion.<span class="skw">click</span>(<img src="1380299051344.png" />)
+    myRegion.<span class="skw">wait</span>(<img src="1380299108748.png" />)
+    myRegion.<span class="skw">click</span>(<img src="1380299108748.png" />)
+    myRegion.<span class="skw">wait</span>(<img src="1380299129006.png" />)
+    myRegion.<span class="skw">click</span>(<img src="1380299129006.png" />)
+    myRegion.<span class="skw">wait</span>(<img src="1380299152850.png" />)
+    myRegion.<span class="skw">click</span>(<img src="1380299152850.png" />)
     returnTopMenu()
     <span class="kw">return</span>
 
 <span class="kw">def</span> package():
-    <span class="skw">wait</span>(<img src="1380300948729.png" />)
-    <span class="skw">click</span>(<img src="1380300948729.png" />)
+    myRegion.<span class="skw">wait</span>(<img src="1380300948729.png" />)
+    myRegion.<span class="skw">click</span>(<img src="1380300948729.png" />)
 
-    <span class="skw">wait</span>(<img src="1380299226850.png" />)
-    <span class="skw">click</span>(<img src="1380299226850.png" />)
-    <span class="skw">wait</span>(<img src="1380299243852.png" />)
-    <span class="skw">click</span>(<img src="1380299243852.png" />)
+    myRegion.<span class="skw">wait</span>(<img src="1380299226850.png" />)
+    myRegion.<span class="skw">click</span>(<img src="1380299226850.png" />)
+    myRegion.<span class="skw">wait</span>(<img src="1380299243852.png" />)
+    myRegion.<span class="skw">click</span>(<img src="1380299243852.png" />)
     returnTopMenu()
     <span class="kw">return</span>
 
 <span class="kw">def</span> pickup100People():
-    <span class="skw">click</span>(<img src="1380299590104.png" />)
-    <span class="skw">wait</span>(<img src="1380299604350.png" />)
-    <span class="skw">click</span>(<img src="1380299604350.png" />)
-    <span class="skw">wait</span>(<img src="1380299636431.png" />)
-    <span class="skw">click</span>(<img src="1380299636431.png" />)
-    <span class="skw">wait</span>(<span class="dig">3</span>)
-    <span class="kw">if</span> exists(<img src="1380382370695.png" />):
+    myRegion.<span class="skw">click</span>(<img src="1380299590104.png" />)
+    myRegion.<span class="skw">wait</span>(<img src="1380299604350.png" />)
+    myRegion.<span class="skw">click</span>(<img src="1380299604350.png" />)
+    myRegion.<span class="skw">wait</span>(<img src="1380299636431.png" />)
+    myRegion.<span class="skw">click</span>(<img src="1380299636431.png" />)
+    myRegion.<span class="skw">wait</span>(<span class="dig">3</span>)
+    <span class="kw">if</span> myRegion.exists(Pattern(<img src="1380382370695.png" />).similar(<span class="dig">0.95</span>)):
         s = judgePeople()
     <span class="kw">else</span>:
         s = <span class="str">"NoMan"</span>
     <span class="kw">return</span> s
 
-f_left = <img src="1380292721591.png" />
+<span class="kw">def</span> runChoose():
+    <span class="kw">while</span> <span class="dig">1</span>:
+        myRegion.<span class="skw">click</span>(<img src="1380298064898.png" />)
+
+        myRegion.<span class="skw">wait</span>(<img src="1380298227453.png" />,<span class="dig">20</span>)
+        myRegion.<span class="skw">click</span>(<img src="1380298227453.png" />)
+        myRegion.<span class="skw">wait</span>(<span class="dig">3</span>)
+        myRegion.<span class="skw">click</span>(<img src="1380298278558.png" />)
+        ChanAinFight()
+        myRegion.<span class="skw">wait</span>(<img src="1380337327356.png" />, <span class="dig">30</span>)
+        myRegion.<span class="skw">click</span>(<img src="1380337327356.png" />)
+        returnTopMenu()
+        firstStudent()
+        buildFormat()
+        ChanAinFight()
+        myRegion.<span class="skw">wait</span>(<img src="1380337327356.png" />, <span class="dig">30</span>)
+        myRegion.<span class="skw">click</span>(<img src="1380337327356.png" />)
+        myRegion.<span class="skw">wait</span>(<img src="1380340309707.png" />, <span class="dig">10</span>)
+        myRegion.<span class="skw">click</span>(<img src="1380340309707.png" />)
+        returnTopMenu()
+        equip()
+        package()
+        ChanAinFight()
+        myRegion.<span class="skw">wait</span>(<img src="1380337327356.png" />, <span class="dig">30</span>)
+
+        returnTopMenu()
+        s=pickup100People()
+        <span class="kw">if</span> s==<span class="str">"NoMan"</span>:
+            clickXToBack(myRegion)
+            gotoRest()
+        <span class="kw">else</span>:
+            <span class="skw">popup</span>(<span class="str">"find people:%s"</span> % (s))
+            <span class="kw">break</span>
+
+<span class="cmt">####setting
+</span>f_left = <img src="1380292721591.png" />
 f_right = <img src="1380292736191.png" />
 
 s_left = <img src="1380293437259.png" />
 s_right = <img src="1380293992157.png" />
 setAutoWaitTimeout(<span class="dig">10</span>)
-openApp(<span class="str">"BlueStacks"</span>)
+
+<span class="cmt">####choose app
+</span>myApp = openApp(<span class="str">"BlueStacks"</span>)
+<span class="skw">wait</span>(<span class="dig">1</span>)
+myApp.focus()
 <span class="skw">wait</span>(<span class="dig">3</span>)
-<span class="cmt">################################################enter Game
-</span><span class="kw">def</span> runChoose():
-    <span class="kw">while</span> <span class="dig">1</span>:
-        <span class="skw">click</span>(<img src="1380298064898.png" />)
-        <span class="skw">wait</span>(<img src="1380298227453.png" />,<span class="dig">20</span>)
-        <span class="skw">click</span>(<img src="1380298227453.png" />)
-        <span class="skw">wait</span>(<span class="dig">3</span>)
-        <span class="skw">click</span>(<img src="1380298278558.png" />)
-        ChanAinFight()
-        <span class="skw">wait</span>(<img src="1380337327356.png" />)
-        <span class="skw">click</span>(<img src="1380337327356.png" />)
-        returnTopMenu()
-        firstStudent()
-        buildFormat()
-        ChanAinFight()
-        <span class="skw">wait</span>(<img src="1380337327356.png" />)
-        <span class="skw">click</span>(<img src="1380337327356.png" />)
-        <span class="skw">wait</span>(<img src="1380340309707.png" />)
-        <span class="skw">click</span>(<img src="1380340309707.png" />)
-        returnTopMenu()
-        equip()
-        package()
-        ChanAinFight()
-        returnTopMenu()
-        s=pickup100People()
-        <span class="kw">if</span> s==<span class="str">"NoMan"</span>:
-            clickXToBack()
-            gotoRest()
-        <span class="kw">else</span>:
-            <span class="skw">popup</span>(<span class="str">"find people:%s"</span> % (s))
-runChoose()
+myRegion = Region(myApp.focusedWindow())
+
+<span class="cmt">#### run Choosing People
+</span>runChoose()
 </pre>
 </body>
 </html>

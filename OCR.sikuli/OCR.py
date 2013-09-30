@@ -198,8 +198,8 @@ wait(3)
 ################################################enter Game
 def runChoose():
     while 1:
-#        click("1380298064898.png")
-#        wait("1380298227453.png",20)
+        click("1380298064898.png")
+        wait("1380298227453.png",20)
         click("1380298227453.png")
         wait(3)
         click("1380298278558.png")
@@ -226,6 +226,3 @@ def runChoose():
         else:
             popup("find people:%s" % (s))
 runChoose()
-#failCondition()
-#s=judgePeople()
-#popup('s %s' % ())

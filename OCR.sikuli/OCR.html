@@ -217,7 +217,7 @@
     <span class="kw">return</span>
 <span class="kw">def</span> firstStudent():
     myRegion.<span class="skw">click</span>(<img src="1380298626344.png" />)
-    myRegion.<span class="skw">wait</span>(<img src="1380300452850.png" />)
+    myRegion.<span class="skw">wait</span>(<img src="1380300452850.png" />, <span class="dig">10</span>)
     regFirst=myRegion.<span class="skw">find</span>(<img src="1380300452850.png" />)
 
     <span class="skw">click</span>(regFirst.<span class="skw">find</span>(<img src="1380298650993.png" />))
@@ -312,7 +312,6 @@ f_right = <img src="1380292736191.png" />
 
 s_left = <img src="1380293437259.png" />
 s_right = <img src="1380293992157.png" />
-setAutoWaitTimeout(<span class="dig">10</span>)
 
 <span class="cmt">####choose app
 </span>myApp = openApp(<span class="str">"BlueStacks"</span>)
@@ -320,6 +319,7 @@ setAutoWaitTimeout(<span class="dig">10</span>)
 myApp.focus()
 <span class="skw">wait</span>(<span class="dig">3</span>)
 myRegion = Region(myApp.focusedWindow())
+myRegion.setAutoWaitTimeout(<span class="dig">10</span>)
 
 <span class="cmt">#### run Choosing People
 </span>runChoose()

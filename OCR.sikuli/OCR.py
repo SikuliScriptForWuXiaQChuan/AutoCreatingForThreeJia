@@ -145,7 +145,7 @@ def ChanAinFight():
     return
 def firstStudent():
     myRegion.click("1380298626344.png")
-    myRegion.wait("1380300452850.png")
+    myRegion.wait("1380300452850.png", 10)
     regFirst=myRegion.find("1380300452850.png")
     
     click(regFirst.find("1380298650993.png"))
@@ -240,7 +240,6 @@ f_right = "1380292736191.png"
 
 s_left = "1380293437259.png"
 s_right = "1380293992157.png"
-setAutoWaitTimeout(10)
 
 ####choose app
 myApp = openApp("BlueStacks")
@@ -248,6 +247,7 @@ wait(1)
 myApp.focus()
 wait(3)
 myRegion = Region(myApp.focusedWindow())
+myRegion.setAutoWaitTimeout(10)
 
 #### run Choosing People
 runChoose()

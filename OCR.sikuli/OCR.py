@@ -32,7 +32,7 @@ def onlyascii(char):
     else: return char
 
 def failCondition():
-    if exists("1380298064898.png",3) == None:
+    if myRegion.exists("1380298064898.png",3) == None:
         returnTopMenu()
         gotoRest()
 
@@ -134,8 +134,10 @@ def clickXToBack(appRegion):
     return rValue
 
 def fight():
-    myRegion.click("1380298355974.png")
-    myRegion.wait("1380298396543.png",60)
+    if myRegion.exists("1380298355974.png", 10):
+        
+        myRegion.click("1380298355974.png")
+        myRegion.wait("1380298396543.png",60)
     return
 
 def ChanAinFight():
@@ -144,6 +146,7 @@ def ChanAinFight():
     fight()
     return
 def firstStudent():
+    myRegion.wait("1380298626344.png",10)
     myRegion.click("1380298626344.png")
     myRegion.wait("1380300452850.png", 10)
     regFirst=myRegion.find("1380300452850.png")
@@ -188,6 +191,7 @@ def package():
     return
 
 def pickup100People():
+    myRegion.wait("1380299590104.png", 30)
     myRegion.click("1380299590104.png")
     myRegion.wait("1380299604350.png", 30)
     myRegion.click("1380299604350.png")
@@ -202,11 +206,12 @@ def pickup100People():
 
 def runChoose():
     while 1:
+        myRegion.wait("1380298064898.png", 10)
         myRegion.click("1380298064898.png")
         
         myRegion.wait("1380298227453.png",20)
         myRegion.click("1380298227453.png")
-        myRegion.wait(3)
+        myRegion.wait("1380298278558.png", 10)
         myRegion.click("1380298278558.png")
         ChanAinFight()
         myRegion.wait("1380337327356.png", 30)

@@ -104,7 +104,7 @@
     <span class="kw">else</span>: <span class="kw">return</span> char
 
 <span class="kw">def</span> failCondition():
-    <span class="kw">if</span> exists(<img src="1380298064898.png" />,<span class="dig">3</span>) == None:
+    <span class="kw">if</span> myRegion.exists(<img src="1380298064898.png" />,<span class="dig">3</span>) == None:
         returnTopMenu()
         gotoRest()
 
@@ -206,8 +206,10 @@
     <span class="kw">return</span> rValue
 
 <span class="kw">def</span> fight():
-    myRegion.<span class="skw">click</span>(<img src="1380298355974.png" />)
-    myRegion.<span class="skw">wait</span>(<img src="1380298396543.png" />,<span class="dig">60</span>)
+    <span class="kw">if</span> myRegion.exists(<img src="1380298355974.png" />, <span class="dig">10</span>):
+
+        myRegion.<span class="skw">click</span>(<img src="1380298355974.png" />)
+        myRegion.<span class="skw">wait</span>(<img src="1380298396543.png" />,<span class="dig">60</span>)
     <span class="kw">return</span>
 
 <span class="kw">def</span> ChanAinFight():
@@ -216,6 +218,7 @@
     fight()
     <span class="kw">return</span>
 <span class="kw">def</span> firstStudent():
+    myRegion.<span class="skw">wait</span>(<img src="1380298626344.png" />,<span class="dig">10</span>)
     myRegion.<span class="skw">click</span>(<img src="1380298626344.png" />)
     myRegion.<span class="skw">wait</span>(<img src="1380300452850.png" />, <span class="dig">10</span>)
     regFirst=myRegion.<span class="skw">find</span>(<img src="1380300452850.png" />)
@@ -260,6 +263,7 @@
     <span class="kw">return</span>
 
 <span class="kw">def</span> pickup100People():
+    myRegion.<span class="skw">wait</span>(<img src="1380299590104.png" />, <span class="dig">30</span>)
     myRegion.<span class="skw">click</span>(<img src="1380299590104.png" />)
     myRegion.<span class="skw">wait</span>(<img src="1380299604350.png" />, <span class="dig">30</span>)
     myRegion.<span class="skw">click</span>(<img src="1380299604350.png" />)
@@ -274,11 +278,12 @@
 
 <span class="kw">def</span> runChoose():
     <span class="kw">while</span> <span class="dig">1</span>:
+        myRegion.<span class="skw">wait</span>(<img src="1380298064898.png" />, <span class="dig">10</span>)
         myRegion.<span class="skw">click</span>(<img src="1380298064898.png" />)
 
         myRegion.<span class="skw">wait</span>(<img src="1380298227453.png" />,<span class="dig">20</span>)
         myRegion.<span class="skw">click</span>(<img src="1380298227453.png" />)
-        myRegion.<span class="skw">wait</span>(<span class="dig">3</span>)
+        myRegion.<span class="skw">wait</span>(<img src="1380298278558.png" />, <span class="dig">10</span>)
         myRegion.<span class="skw">click</span>(<img src="1380298278558.png" />)
         ChanAinFight()
         myRegion.<span class="skw">wait</span>(<img src="1380337327356.png" />, <span class="dig">30</span>)

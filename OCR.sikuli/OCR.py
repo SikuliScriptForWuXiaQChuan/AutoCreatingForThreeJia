@@ -189,9 +189,9 @@ def package():
 
 def pickup100People():
     myRegion.click("1380299590104.png")
-    myRegion.wait("1380299604350.png")
+    myRegion.wait("1380299604350.png", 30)
     myRegion.click("1380299604350.png")
-    myRegion.wait("1380299636431.png")
+    myRegion.wait("1380299636431.png", 30)
     myRegion.click("1380299636431.png")
     myRegion.wait(3)
     if myRegion.exists(Pattern("1380382370695.png").similar(0.95)):

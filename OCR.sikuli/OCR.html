@@ -170,7 +170,6 @@
 
 <span class="kw">def</span> returnTopMenu():
     <span class="kw">while</span> myRegion.exists(<img src="1380302243814.png" />) == None:
-        <span class="kw">print</span>(<span class="str">'back to upper menu'</span>)
 
         <span class="kw">if</span> clickXToBack(myRegion):
             myRegion.<span class="skw">wait</span>(<span class="dig">3</span>)
@@ -190,16 +189,13 @@
         <span class="kw">if</span> targetRegion.exists(<img src="1380553164626.png" />):
             x1 = targetRegion.findAll(<img src="1380553164626.png" />)
             allArray += x1
-            <span class="kw">print</span>(<span class="str">'1'</span>)
         <span class="kw">if</span> targetRegion.exists(<img src="1380341000249.png" />):
             x2 = targetRegion.findAll(<img src="1380341000249.png" />)
             allArray += x2
-            <span class="kw">print</span>(<span class="str">'2'</span>)
         <span class="kw">if</span> <span class="kw">not</span> allArray:
             <span class="kw">return</span> rValue
         rValue = True
         newList = sorted(allArray, key=<span class="kw">lambda</span> obj: obj.getX())
-        <span class="kw">print</span>(<span class="str">'3'</span>)
         total = len(list(newList))
         targetRegion.<span class="skw">click</span>(newList[<span class="dig">0</span>])
         targetRegion.<span class="skw">wait</span>(<span class="dig">3</span>)
@@ -267,16 +263,20 @@
     myRegion.<span class="skw">click</span>(<img src="1380299590104.png" />)
     myRegion.<span class="skw">wait</span>(<img src="1380299604350.png" />, <span class="dig">30</span>)
     myRegion.<span class="skw">click</span>(<img src="1380299604350.png" />)
-    myRegion.<span class="skw">wait</span>(<img src="1380299636431.png" />, <span class="dig">30</span>)
-    myRegion.<span class="skw">click</span>(<img src="1380299636431.png" />)
-    myRegion.<span class="skw">wait</span>(<span class="dig">3</span>)
-    <span class="kw">if</span> myRegion.exists(Pattern(<img src="1380382370695.png" />).similar(<span class="dig">0.95</span>)):
-        s = judgePeople()
+    <span class="kw">if</span> myRegion.exists(<img src="1380299636431.png" />, <span class="dig">30</span>):
+        myRegion.<span class="skw">click</span>(<img src="1380299636431.png" />)
+        myRegion.<span class="skw">wait</span>(<span class="dig">3</span>)
+        <span class="kw">if</span> myRegion.exists(Pattern(<img src="1380382370695.png" />).similar(<span class="dig">0.95</span>)):
+            s = judgePeople()
+        <span class="kw">else</span>:
+            s = <span class="str">"NoMan"</span>
     <span class="kw">else</span>:
+        returnTopMenu()
         s = <span class="str">"NoMan"</span>
     <span class="kw">return</span> s
 
 <span class="kw">def</span> runChoose():
+    count = <span class="dig">1</span>
     <span class="kw">while</span> <span class="dig">1</span>:
         myRegion.<span class="skw">wait</span>(<img src="1380298064898.png" />, <span class="dig">10</span>)
         myRegion.<span class="skw">click</span>(<img src="1380298064898.png" />)
@@ -305,6 +305,8 @@
         returnTopMenu()
         s=pickup100People()
         <span class="kw">if</span> s==<span class="str">"NoMan"</span>:
+            <span class="kw">print</span>(<span class="str">'pick up people in %i time failure!'</span> % (count))
+            count += <span class="dig">1</span>
             clickXToBack(myRegion)
             gotoRest()
         <span class="kw">else</span>:
@@ -325,7 +327,6 @@ myApp.focus()
 <span class="skw">wait</span>(<span class="dig">3</span>)
 myRegion = Region(myApp.focusedWindow())
 myRegion.setAutoWaitTimeout(<span class="dig">10</span>)
-
 <span class="cmt">#### run Choosing People
 </span>runChoose()
 </pre>

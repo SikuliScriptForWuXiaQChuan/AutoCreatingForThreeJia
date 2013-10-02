@@ -98,7 +98,6 @@ def gotoRest():
 
 def returnTopMenu():
     while myRegion.exists("1380302243814.png") == None:
-        print('back to upper menu')
            
         if clickXToBack(myRegion):
             myRegion.wait(3)
@@ -118,16 +117,13 @@ def clickXToBack(appRegion):
         if targetRegion.exists("1380553164626.png"):
             x1 = targetRegion.findAll("1380553164626.png")
             allArray += x1
-            print('1')
         if targetRegion.exists("1380341000249.png"):
             x2 = targetRegion.findAll("1380341000249.png")
             allArray += x2
-            print('2')
         if not allArray:
             return rValue
         rValue = True
         newList = sorted(allArray, key=lambda obj: obj.getX())
-        print('3')
         total = len(list(newList))
         targetRegion.click(newList[0])
         targetRegion.wait(3)
@@ -195,16 +191,20 @@ def pickup100People():
     myRegion.click("1380299590104.png")
     myRegion.wait("1380299604350.png", 30)
     myRegion.click("1380299604350.png")
-    myRegion.wait("1380299636431.png", 30)
-    myRegion.click("1380299636431.png")
-    myRegion.wait(3)
-    if myRegion.exists(Pattern("1380382370695.png").similar(0.95)):
-        s = judgePeople()
+    if myRegion.exists("1380299636431.png", 30):
+        myRegion.click("1380299636431.png")
+        myRegion.wait(3)
+        if myRegion.exists(Pattern("1380382370695.png").similar(0.95)):
+            s = judgePeople()
+        else:
+            s = "NoMan"
     else:
+        returnTopMenu()
         s = "NoMan"
     return s
 
 def runChoose():
+    count = 1
     while 1:
         myRegion.wait("1380298064898.png", 10)
         myRegion.click("1380298064898.png")
@@ -233,6 +233,8 @@ def runChoose():
         returnTopMenu()
         s=pickup100People()
         if s=="NoMan":
+            print('pick up people in %i time failure!' % (count))
+            count += 1
             clickXToBack(myRegion)
             gotoRest()
         else:
@@ -253,6 +255,5 @@ myApp.focus()
 wait(3)
 myRegion = Region(myApp.focusedWindow())
 myRegion.setAutoWaitTimeout(10)
-
 #### run Choosing People
 runChoose()

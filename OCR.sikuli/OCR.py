@@ -4,14 +4,27 @@ def leftRegion():
 def rightUpRegion():
     return Region(myRegion.getX() + (myRegion.getW() / 2), myRegion.getY(), myRegion.getW() / 2, myRegion.getH()/2)
 
-def ActionMethod(region, pattern):
+def ActionMethodWithRegion(region, pattern):
     region.wait(pattern, 30)
     region.click(pattern)
     return
 
-def reset():
-    regLeft = myRegion.find("1380292721591.png")
-    regRight = myRegion.find("1380292736191.png")
+def Log(s):
+    wait(1)
+    myText.focus()
+    wait(1)
+    type(s)
+    wait(1)
+    myApp.focus()
+    wait(1)
+    return
+def ActionMethod(pattern):
+    ActionMethodWithRegion(myRegion, pattern)
+    return
+
+def OCR(leftOfOCR, rightOfOCR):
+    regLeft = myRegion.find(leftOfOCR)
+    regRight = myRegion.find(rightOfOCR)
     newX = regLeft.getX() + regLeft.getW()
     textReg = Region(newX, regLeft.getY(), regRight.getX() - newX, regLeft.getH())
     s = textReg.text()
@@ -20,26 +33,40 @@ def reset():
     s2 = s1.replace(" ","")
     s3 = filter(onlyascii, s2)
     print('s:%s, s1:%s, s2:%s, s3:%s' % (s, s1, s2, s3))
+
+    return s3
+
+def reset(leftOfOCR, rightOfOCR):
+    s = OCR(leftOfOCR, rightOfOCR) 
+    fillRegCode(s)
+    failCondition()
+
+def fillRegCode(s):
     myRegion.click("1380293789145.png")
     myRegion.wait(3)
-    myRegion.type(s3)
+    myRegion.type(s)
     myRegion.wait(3)
-    if myRegion.exists("1380293204363.png",10):
-        myRegion.click("1380293204363.png")
-        myRegion.wait("1380294123754.png")
-        myRegion.click("1380294123754.png")
-    else:
-        returnTopMenu()
-        gotorest()
+    type("\n")
+    ActionMethod("1380294123754.png")
+    return 
+
+def judgementDetailRegCode(event):
+    print "judgementDetail"
     
+    s = OCR("1380732254499.png","1380732611879.png")
+    fillRegCode(s)
+    event.region.stopObserver()
+    myRegion.wait(3)
+    return
+
 def onlyascii(char):
     if ord(char) < 48 or ord(char) > 127: return ''
     else: return char
 
 def failCondition():
-    if myRegion.exists("1380298064898.png",3) == None:
+    if myRegion.exists("1380298064898.png",10) == None:
         returnTopMenu()
-        gotoRest()
+        gotoReset()
 
 def judgePeople():
     myLeftRegion = leftRegion()
@@ -92,12 +119,11 @@ def judgePeople():
         print('Not a man I want!')
         return s
 
-def gotoRest():
-    myRegion.click("1380297823894.png")
-    myRegion.wait(1)
-    myRegion.click("1380297843385.png")
+def gotoReset():
+    ActionMethod("1380297823894.png")
+    ActionMethod("1380297843385.png")
     myRegion.wait(3)
-    reset()
+    reset("1380292721591.png", "1380292736191.png")
     myRegion.wait(3)
     failCondition()
 
@@ -142,60 +168,46 @@ def fight():
     return
 
 def ChanAinFight():
-    myRegion.wait(Pattern("1380562324428.png").similar(0.50),30)
-    myRegion.click(Pattern("1380562324428.png").similar(0.50))
+    ActionMethod(Pattern("1380562324428.png").similar(0.50))
     fight()
     return
 def firstStudent():
-    myRegion.wait("1380298626344.png",10)
-    myRegion.click("1380298626344.png")
-    myRegion.wait("1380300452850.png", 10)
+    ActionMethod("1380298626344.png")
+    myRegion.wait("1380300452850.png", 30)
     regFirst=myRegion.find("1380300452850.png")
     
     click(regFirst.find("1380298650993.png"))
     if myRegion.exists("1380301410695.png", 10):
         myRegion.click("1380301410695.png")
-    if myRegion.exists("1380305068556.png", 10):
+    if myRegion.exists("1380305068556.png", 30):
         myRegion.click("1380305068556.png")
     wait(3)
     return
 
 def buildFormat():
-    wait("1380298820327.png", 10)
-    myRegion.click("1380298820327.png")
-    myRegion.wait("1380298835059.png")
-    myRegion.click("1380298835059.png")
-    myRegion.wait("1380298867375.png")
-    myRegion.click("1380298867375.png")
+    ActionMethod("1380298820327.png")
+    ActionMethod("1380298835059.png")
+    ActionMethod("1380298867375.png")
     returnTopMenu() 
     return
 def equip():
-    myRegion.click("1380299051344.png")
-    myRegion.wait("1380299108748.png")
-    myRegion.click("1380299108748.png")
-    myRegion.wait("1380299129006.png")
-    myRegion.click("1380299129006.png")
-    myRegion.wait("1380299152850.png")
-    myRegion.click("1380299152850.png")
+    ActionMethod("1380299051344.png")
+    ActionMethod("1380299108748.png")
+    ActionMethod("1380299129006.png")
+    ActionMethod("1380299152850.png")
     returnTopMenu()
     return
 
 def package():
-    myRegion.wait("1380300948729.png")
-    myRegion.click("1380300948729.png")
-    
-    myRegion.wait("1380299226850.png")
-    myRegion.click("1380299226850.png")
-    myRegion.wait("1380299243852.png")
-    myRegion.click("1380299243852.png")
+    ActionMethod("1380300948729.png")
+    ActionMethod("1380299226850.png")
+    ActionMethod("1380299243852.png")
     returnTopMenu()
     return
 
 def pickup100People():
-    myRegion.wait("1380299590104.png", 30)
-    myRegion.click("1380299590104.png")
-    myRegion.wait("1380299604350.png", 30)
-    myRegion.click("1380299604350.png")
+    ActionMethod("1380299590104.png")
+    ActionMethod("1380299604350.png")
     if myRegion.exists("1380299636431.png", 30):
         myRegion.click("1380299636431.png")
         myRegion.wait(3)
@@ -211,36 +223,30 @@ def pickup100People():
 def runChoose():
     count = 1
     while 1:
-        ActionMethod(myRegion, "1380298064898.png")
-        
-        myRegion.wait("1380298227453.png",20)
-        myRegion.click("1380298227453.png")
-        myRegion.wait("1380298278558.png", 10)
-        myRegion.click("1380298278558.png")
+        Log('starting process %i time' % (count))
+        ActionMethod("1380298064898.png")
+        ActionMethod("1380298227453.png")
+        ActionMethod("1380298278558.png")
         ChanAinFight()
-        myRegion.wait("1380337327356.png", 30)
-        myRegion.click("1380337327356.png")
+        ActionMethod("1380337327356.png")
         returnTopMenu()
         firstStudent()
         buildFormat()
         ChanAinFight()
-        myRegion.wait("1380337327356.png", 30)
-        myRegion.click("1380337327356.png")
-        myRegion.wait("1380340309707.png", 10)
-        myRegion.click("1380340309707.png")
+        ActionMethod("1380337327356.png")
+        ActionMethod("1380340309707.png")
         returnTopMenu()
         equip()
         package()
         ChanAinFight()
-        myRegion.wait("1380337327356.png", 30)
-
+        ActionMethod("1380337327356.png")
         returnTopMenu()
         s=pickup100People()
         if s=="NoMan":
-            print('pick up people in %i time failure!' % (count))
+            Log('pick up people in %i time failure!' % (count))
             count += 1
             clickXToBack(myRegion)
-            gotoRest()
+            gotoReset()
         else:
             popup("find people:%s" % (s))
             break
@@ -248,6 +254,7 @@ def runChoose():
 ####setting
 
 ####choose app
+myText = openApp("TextEdit")
 myApp = openApp("BlueStacks")
 wait(1)
 myApp.focus()

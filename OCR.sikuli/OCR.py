@@ -4,6 +4,11 @@ def leftRegion():
 def rightUpRegion():
     return Region(myRegion.getX() + (myRegion.getW() / 2), myRegion.getY(), myRegion.getW() / 2, myRegion.getH()/2)
 
+def ActionMethod(region, pattern):
+    region.wait(pattern, 30)
+    region.click(pattern)
+    return
+
 def reset():
     regLeft = myRegion.find("1380292721591.png")
     regRight = myRegion.find("1380292736191.png")
@@ -206,8 +211,7 @@ def pickup100People():
 def runChoose():
     count = 1
     while 1:
-        myRegion.wait("1380298064898.png", 10)
-        myRegion.click("1380298064898.png")
+        ActionMethod(myRegion, "1380298064898.png")
         
         myRegion.wait("1380298227453.png",20)
         myRegion.click("1380298227453.png")
@@ -242,11 +246,6 @@ def runChoose():
             break
 
 ####setting
-f_left = "1380292721591.png"
-f_right = "1380292736191.png"
-
-s_left = "1380293437259.png"
-s_right = "1380293992157.png"
 
 ####choose app
 myApp = openApp("BlueStacks")

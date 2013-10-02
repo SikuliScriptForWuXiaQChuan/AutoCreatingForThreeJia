@@ -254,7 +254,7 @@ def runChoose():
 ####setting
 
 ####choose app
-myText = openApp("TextEdit")
+myText = openApp("Notes")
 myApp = openApp("BlueStacks")
 wait(1)
 myApp.focus()

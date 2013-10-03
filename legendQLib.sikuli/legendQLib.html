@@ -207,11 +207,11 @@
 </span><span class="kw">def</span> pickStudent(flag, obj):
     <span class="skw">click</span>(<img src="1380720199487.png" />)
     <span class="kw">if</span> flag == <span class="dig">0</span>:
-        <span class="skw">wait</span>(<img src="1380710775636-1.png" />, <span class="dig">10</span>)
-        <span class="skw">click</span>(<img src="1380710775636-1.png" />)
+        <span class="skw">wait</span>(Pattern(<img src="1380710775636-1.png" />).similar(<span class="dig">0.95</span>), <span class="dig">10</span>)
+        <span class="skw">click</span>(Pattern(<img src="1380710775636-1.png" />).similar(<span class="dig">0.95</span>))
     <span class="kw">elif</span> flag == <span class="dig">1</span>:
-        <span class="skw">wait</span>(<img src="1380720222877.png" />, <span class="dig">10</span>)
-        <span class="skw">click</span>(<img src="1380720222877.png" />)
+        <span class="skw">wait</span>(Pattern(<img src="1380720222877.png" />).similar(<span class="dig">0.95</span>), <span class="dig">10</span>)
+        <span class="skw">click</span>(Pattern(<img src="1380720222877.png" />).similar(<span class="dig">0.95</span>))
     <span class="cmt">#else:
 </span>
     <span class="skw">wait</span>(<span class="dig">3</span>);
@@ -245,20 +245,25 @@
         returnTopMenu()
 
 <span class="kw">def</span> closeSuprise():
-     <span class="kw">while</span> exists(<img src="1380743092036.png" />):
+     <span class="kw">while</span> exists(<img src="1380743092036.png" />, <span class="dig">2</span>):
         <span class="skw">click</span>(<img src="1380743092036.png" />)
         <span class="skw">wait</span>(<span class="dig">1</span>)
 
 
 <span class="kw">def</span> skipBattle():
-    <span class="kw">print</span>(<span class="str">"skipBattle not implement yet..."</span>)
+    <span class="kw">print</span>(<span class="str">"skipBattle..."</span>)
+    <span class="kw">if</span> exists(<img src="1380782430341.png" />, <span class="dig">20</span>):
+        <span class="skw">click</span>(<img src="1380782430341.png" />)
+        <span class="kw">if</span> exists(<img src="1380782771931.png" />, <span class="dig">20</span>):
+            <span class="skw">click</span>(<img src="1380782771931.png" />)
+
 
 
 <span class="kw">def</span> upToLv5AndGetGold():
     <span class="skw">click</span>(<img src="1380724384033-3.png" />)
     waitAndClick(<img src="1380740029234.png" />, <span class="dig">10</span>)
     <span class="skw">wait</span>(<span class="dig">1</span>)
-    lv = <span class="dig">4</span>
+    lv = <span class="dig">2</span>
     <span class="cmt"># loop to lv 5
 </span>    <span class="kw">while</span> <span class="dig">1</span>:
         <span class="skw">click</span>(<img src="1380740063563.png" />)
@@ -290,6 +295,13 @@
     waitAndClick(<img src="1380741380684.png" />, <span class="dig">5</span>)
     waitAndClick(<img src="1380741413769.png" />, <span class="dig">5</span>)
     returnTopMenu()
+
+<span class="cmt"># test entry
+</span><span class="kw">def</span> testMain():
+    openApp(<span class="str">"BlueStacks"</span>)
+    upToLv5AndGetGold()
+
+testMain()
 </pre>
 </body>
 </html>

@@ -135,11 +135,11 @@ def onlyascii(char):
 def pickStudent(flag, obj):
     click("1380720199487.png")
     if flag == 0:
-        wait("1380710775636-1.png", 10)
-        click("1380710775636-1.png")
+        wait(Pattern("1380710775636-1.png").similar(0.95), 10)
+        click(Pattern("1380710775636-1.png").similar(0.95))
     elif flag == 1:
-        wait("1380720222877.png", 10)
-        click("1380720222877.png")
+        wait(Pattern("1380720222877.png").similar(0.95), 10)
+        click(Pattern("1380720222877.png").similar(0.95))
     #else:
         
     wait(3);
@@ -173,20 +173,25 @@ def returnTopMenu():
         returnTopMenu()
 
 def closeSuprise():
-     while exists("1380743092036.png"):
+     while exists("1380743092036.png", 2):
         click("1380743092036.png")
         wait(1)
 
 
 def skipBattle():
-    print("skipBattle not implement yet...")
+    print("skipBattle...")
+    if exists("1380782430341.png", 20):
+        click("1380782430341.png")
+        if exists("1380782771931.png", 20):
+            click("1380782771931.png")
+            
 
 
 def upToLv5AndGetGold():
     click("1380724384033-3.png")
     waitAndClick("1380740029234.png", 10)
     wait(1)
-    lv = 4
+    lv = 2
     # loop to lv 5
     while 1:        
         click("1380740063563.png")
@@ -218,3 +223,10 @@ def upToLv5AndGetGold():
     waitAndClick("1380741380684.png", 5)
     waitAndClick("1380741413769.png", 5)
     returnTopMenu()
+
+# test entry
+def testMain():
+    openApp("BlueStacks")
+    upToLv5AndGetGold()
+
+testMain()    

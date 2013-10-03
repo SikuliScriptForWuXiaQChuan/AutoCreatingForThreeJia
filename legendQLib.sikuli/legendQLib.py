@@ -34,6 +34,11 @@ def Log(s):
         print(s)
     return
 
+def closeSuprise():
+    while exists("1380743092036.png"):
+        click("1380743092036.png")
+        wait(1)
+
 # check region image is exists and click
 def checkClick(obj):
     if exists(obj):

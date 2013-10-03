@@ -32,7 +32,7 @@ def OCR(leftOfOCR, rightOfOCR):
     s1 = s.replace(".","")
     s2 = s1.replace(" ","")
     s3 = filter(onlyascii, s2)
-    print('s:%s, s1:%s, s2:%s, s3:%s' % (s, s1, s2, s3))
+    print ('after proofread: %s' % s3)
 
     return s3
 

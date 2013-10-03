@@ -139,12 +139,12 @@
     <span class="skw">click</span>(<img src="1380702038600-1.png" />)
 
     <span class="kw">print</span>(<span class="str">"check drop item..."</span>)
-    <span class="kw">if</span> exists(<img src="1380695515823-4.png" />):
-        <span class="skw">click</span>(<img src="1380695515823-4.png" />)
+    <span class="kw">if</span> exists(<img src="1380695515823-3.png" />):
+        <span class="skw">click</span>(<img src="1380695515823-3.png" />)
     <span class="kw">print</span>(<span class="str">"close"</span>)
-    <span class="kw">if</span> exists(<img src="1380696510493-3.png" />):
-        <span class="skw">click</span>(<img src="1380696510493-3.png" />)
-
+    <span class="kw">if</span> exists(<img src="1380696510493-2.png" />):
+        <span class="skw">click</span>(<img src="1380696510493-2.png" />)
+    closeSuprise()
     <span class="skw">click</span>(<img src="1380695864981-3.png" />)
     <span class="kw">return</span> b
 
@@ -214,7 +214,7 @@
         <span class="skw">click</span>(<img src="1380720222877.png" />)
     <span class="cmt">#else:
 </span>
-
+    <span class="skw">wait</span>(<span class="dig">3</span>);
 
     lv = <span class="dig">0</span>
     <span class="kw">if</span> exists(<img src="1380721537747.png" />):
@@ -243,6 +243,53 @@
         <span class="skw">click</span>(<img src="1380695864981-3.png" />)
         <span class="skw">wait</span>(<span class="dig">1</span>)
         returnTopMenu()
+
+<span class="kw">def</span> closeSuprise():
+     <span class="kw">while</span> exists(<img src="1380743092036.png" />):
+        <span class="skw">click</span>(<img src="1380743092036.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+
+
+<span class="kw">def</span> skipBattle():
+    <span class="kw">print</span>(<span class="str">"skipBattle not implement yet..."</span>)
+
+
+<span class="kw">def</span> upToLv5AndGetGold():
+    <span class="skw">click</span>(<img src="1380724384033-3.png" />)
+    waitAndClick(<img src="1380740029234.png" />, <span class="dig">10</span>)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    lv = <span class="dig">4</span>
+    <span class="cmt"># loop to lv 5
+</span>    <span class="kw">while</span> <span class="dig">1</span>:
+        <span class="skw">click</span>(<img src="1380740063563.png" />)
+        skipBattle()
+        waitAndClick(<img src="1380695830359-2.png" />, <span class="dig">30</span>)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="kw">if</span> exists(<img src="1380740401525.png" />):
+            lv += <span class="dig">1</span>
+            closeSuprise()
+            <span class="kw">if</span> exists(<img src="1380745900232.png" />):
+                <span class="skw">click</span>(<img src="1380745900232.png" />)
+
+        <span class="kw">print</span>(<span class="str">"lv: %s"</span> % lv)
+
+        closeSuprise()
+
+        <span class="kw">if</span> lv == <span class="dig">5</span>:
+            <span class="kw">break</span>
+
+    returnTopMenu()
+    <span class="cmt"># get Gold
+</span>    waitAndClick(<img src="1380741089704.png" />, <span class="dig">10</span>)
+    waitAndClick(<img src="1380741161878.png" />, <span class="dig">10</span>)
+    waitAndClick(<img src="1380741198664.png" />, <span class="dig">3</span>)
+    waitAndClick(<img src="1380741260901.png" />, <span class="dig">5</span>)
+    <span class="skw">click</span>(<img src="1380741221220.png" />)
+    returnTopMenu()
+    waitAndClick(<img src="1380741338550.png" />, <span class="dig">5</span>)
+    waitAndClick(<img src="1380741380684.png" />, <span class="dig">5</span>)
+    waitAndClick(<img src="1380741413769.png" />, <span class="dig">5</span>)
+    returnTopMenu()
 </pre>
 </body>
 </html>

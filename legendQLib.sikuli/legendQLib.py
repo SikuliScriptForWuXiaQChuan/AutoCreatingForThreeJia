@@ -67,12 +67,12 @@ def runTutorial(firstAce):
     click("1380702038600-1.png")
 
     print("check drop item...")
-    if exists("1380695515823-4.png"):
-        click("1380695515823-4.png")
+    if exists("1380695515823-3.png"):
+        click("1380695515823-3.png")
     print("close")   
-    if exists("1380696510493-3.png"):
-        click("1380696510493-3.png")
-            
+    if exists("1380696510493-2.png"):
+        click("1380696510493-2.png")
+    closeSuprise()
     click("1380695864981-3.png")
     return b
 
@@ -142,7 +142,7 @@ def pickStudent(flag, obj):
         click("1380720222877.png")
     #else:
         
-
+    wait(3);
 
     lv = 0
     if exists("1380721537747.png"):
@@ -171,4 +171,50 @@ def returnTopMenu():
         click("1380695864981-3.png")
         wait(1)
         returnTopMenu()
+
+def closeSuprise():
+     while exists("1380743092036.png"):
+        click("1380743092036.png")
+        wait(1)
+
+
+def skipBattle():
+    print("skipBattle not implement yet...")
+
+
+def upToLv5AndGetGold():
+    click("1380724384033-3.png")
+    waitAndClick("1380740029234.png", 10)
+    wait(1)
+    lv = 4
+    # loop to lv 5
+    while 1:        
+        click("1380740063563.png")
+        skipBattle()
+        waitAndClick("1380695830359-2.png", 30)  
+        wait(1)
+        if exists("1380740401525.png"):
+            lv += 1     
+            closeSuprise()
+            if exists("1380745900232.png"):
+                click("1380745900232.png")
+            
+        print("lv: %s" % lv)    
         
+        closeSuprise()
+        
+        if lv == 5:
+            break
+    
+    returnTopMenu()
+    # get Gold
+    waitAndClick("1380741089704.png", 10)
+    waitAndClick("1380741161878.png", 10)
+    waitAndClick("1380741198664.png", 3)
+    waitAndClick("1380741260901.png", 5)
+    click("1380741221220.png")
+    returnTopMenu()
+    waitAndClick("1380741338550.png", 5)
+    waitAndClick("1380741380684.png", 5)
+    waitAndClick("1380741413769.png", 5)
+    returnTopMenu()

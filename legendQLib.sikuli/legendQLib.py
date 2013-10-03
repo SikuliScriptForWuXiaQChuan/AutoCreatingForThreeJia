@@ -1,4 +1,5 @@
 from sikuli import * 
+
 # ActionMethodWithRegion
 # param region: In this given region, find and click the pattern in 30 sec.
 # param pattern: The target you want to click, which could be a string, pic or something else.
@@ -29,6 +30,8 @@ def Log(s):
         wait(1)
         myApp.focus()
         wait(1)
+    else:
+        print(s)
     return
 
 # check region image is exists and click

@@ -1,14 +1,25 @@
 from sikuli import * 
-
+# ActionMethodWithRegion
+# param region: In this given region, find and click the pattern in 30 sec.
+# param pattern: The target you want to click, which could be a string, pic or something else.
+# return: null
 def ActionMethodWithRegion(region, pattern):
     region.wait(pattern, 30)
     region.click(pattern)
     return
 
+# ActionMethod
+# If myRegion exists, invoke ActionMethodWithRegion(myRegion, pattern)
+# param pattern: The target you want to click, which could be a string, pic or something else.
+# return: null
 def ActionMethod(pattern):
     ActionMethodWithRegion(myRegion, pattern)
     return
 
+# Log
+# For any textEditor you assign, type the log into.
+# param s: 
+# return: null
 def Log(s):
     if myText:
         wait(1)
@@ -96,7 +107,9 @@ def runTutorial(firstAce):
     click("1380695864981-3.png")
     return b
 
-# go to reset account
+# gotoreset
+# reset the account. Note, you have to invoke returnTopMenu before this method, for be suring that we could go from setting options.
+# return: null
 def gotoreset():
     ActionMethod("1380297823894.png")
     ActionMethod("1380297843385.png")
@@ -105,16 +118,22 @@ def gotoreset():
     myRegion.wait(3)
     resetFailCondition()
     return
-
+# leftRegion
+# The left screen of myRegion. To decrease the searching area for finding patterns.
+# return: null
 def leftRegion():
     return Region(myRegion.getX(), myRegion.getY(), myRegion.getW() / 2, myRegion.getH())
 
+# rightUpRegion
+# one-fouth of myRegion in RightUp side. For decreasing the searching area.
+# return: null
 def rightUpRegion():
     return Region(myRegion.getX() + (myRegion.getW() / 2), myRegion.getY(), myRegion.getW() / 2, myRegion.getH()/2)    
 
 #OCR method
-#leftOfOCR: the picture which is left from OCR.
-#rightOfOCR: the picture which is right from OCR
+#param leftOfOCR: the picture which is left from OCR.
+#param rightOfOCR: the picture which is right from OCR
+#return: the OCR string in ASCII
 def OCR(leftOfOCR, rightOfOCR):
     regLeft = myRegion.find(leftOfOCR)
     regRight = myRegion.find(rightOfOCR)
@@ -129,7 +148,10 @@ def OCR(leftOfOCR, rightOfOCR):
 
     return s3
 
-#fill the reg code recongized by OCR
+# fillRegCode
+# filling the regCode while reset the account.
+# param s: OCR string
+# return: null
 def fillRegCode(s):
     myRegion.click("1380293789145-1.png")
     myRegion.wait(3)

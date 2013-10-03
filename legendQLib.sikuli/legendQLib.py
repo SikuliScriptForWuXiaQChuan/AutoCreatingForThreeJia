@@ -118,6 +118,7 @@ def gotoreset():
     myRegion.wait(3)
     resetFailCondition()
     return
+
 # leftRegion
 # The left screen of myRegion. To decrease the searching area for finding patterns.
 # return: null
@@ -161,7 +162,11 @@ def fillRegCode(s):
     ActionMethod("1380294123754-1.png")
     return 
 
-# reset account
+# reset
+# reset this account in typing regCode screen.
+# param leftOfOCR: the left picture of OCR
+# param leftOfOCR: The right picture of OCR
+# return: null
 def reset(leftOfOCR, rightOfOCR):   
     tread = Settings.OcrTextRead
     Settings.OcrTextRead = True
@@ -170,17 +175,27 @@ def reset(leftOfOCR, rightOfOCR):
     resetFailCondition()
     return
 
+# onlyascii
+# trim the string to exclude any non-ASCII char.
+# param char: Any string you want to process
+# return: A string excluding non-ASCII char
 def onlyascii(char):
     if ord(char) < 48 or ord(char) > 127: return ''
     else: return char
 
-#
+# resetFailCondition
+# In the failure condition of reseting account, you should invoke this method to try again.
+# return: null
 def resetFailCondition():
     if myRegion.exists("1380298064898.png",10) == None:
         returnTopMenu()
         gotoReset()
     return
 
+# returnTopMenu
+# disable all window until the main screen is visible
+# param char: Any string you want to process
+# return: A string excluding non-ASCII char
 def returnTopMenu():
     while myRegion.exists("1380302243814.png") == None:
            
@@ -191,6 +206,11 @@ def returnTopMenu():
             break
     myRegion.wait(1)
     return
+
+# clickXToBack
+# click the X button. If the number of X button is bigger then 1, this methomd would click the x-button whose x position is the minimum of them.
+# param appRegion: searching region
+# return: null
 
 def clickXToBack(appRegion):
     while True:

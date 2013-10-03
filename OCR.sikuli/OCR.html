@@ -82,13 +82,13 @@
     <span class="kw">return</span>
 
 <span class="kw">def</span> Log(s):
-    <span class="skw">wait</span>(<span class="dig">1</span>)
     myText.focus()
     <span class="skw">wait</span>(<span class="dig">1</span>)
     <span class="skw">type</span>(s)
     <span class="skw">wait</span>(<span class="dig">1</span>)
-    myApp.focus()
+    <span class="skw">type</span>(<span class="str">"\n"</span>)
     <span class="skw">wait</span>(<span class="dig">1</span>)
+    myApp.focus()
     <span class="kw">return</span>
 <span class="kw">def</span> ActionMethod(pattern):
     ActionMethodWithRegion(myRegion, pattern)
@@ -139,57 +139,61 @@
     <span class="kw">if</span> myRegion.exists(<img src="1380298064898.png" />,<span class="dig">10</span>) == None:
         returnTopMenu()
         gotoReset()
+<span class="kw">def</span> judgeBClassPeople():
+    myLeftRegion = leftRegion()
+    <span class="kw">if</span> myLeftRegion.exists(Pattern(<img src="1380812256013.png" />).similar(<span class="dig">0.95</span>)):
+        s=<span class="str">"InWan"</span>
+    <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380812634032.png" />).similar(<span class="dig">0.95</span>)):
+        s = <span class="str">"GenYeoShen"</span>
+    <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380812733459.png" />).similar(<span class="dig">0.95</span>)):
+        s=<span class="str">"ShenFaeFae"</span>
+    <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380812785030.png" />).similar(<span class="dig">0.95</span>)):
+        s=<span class="str">"FanYao"</span>
+    <span class="kw">else</span>:
+        s=<span class="str">"NoMan"</span>
+    Log(<span class="str">'Got B Class Student %s'</span> % s)
+    <span class="kw">return</span> s
 
-<span class="kw">def</span> judgePeople():
+<span class="kw">def</span> judgeAcePeople():
     myLeftRegion = leftRegion()
     <span class="kw">if</span> myLeftRegion.exists(Pattern(<img src="1380295688803.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"LiHuan"</span>
-        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
-        <span class="kw">return</span> s
+        Log(<span class="str">'checking %s'</span> % (s))
     <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380295744094.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"WanChunGeo"</span>
-        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
-        <span class="kw">return</span> s
+        Log(<span class="str">'checking %s'</span> % (s))
     <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380295814271.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"GenGeoChin"</span>
-        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
-        <span class="kw">return</span> s
+        Log(<span class="str">'checking %s'</span> % (s))
     <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380295886966.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"IKouChen"</span>
-        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
+        Log(<span class="str">'checking %s'</span> % (s))
         <span class="kw">return</span> s
     <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380295952501.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"TonLau"</span>
-        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
-        <span class="kw">return</span> s
+        Log(<span class="str">'checking %s'</span> % (s))
     <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380296000327.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"IanKou"</span>
-        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
-        <span class="kw">return</span> s
+        Log(<span class="str">'checking %s'</span> % (s))
     <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380296025439.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"WuIChi"</span>
-        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
-        <span class="kw">return</span> s
+        Log(<span class="str">'checking %s'</span> % (s))
     <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380296113406.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"ShiFunBuBai"</span>
-        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
-        <span class="kw">return</span> s
+        Log(<span class="str">'checking %s'</span> % (s))
     <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380296376446.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"LuCuLian"</span>
-        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
-        <span class="kw">return</span> s
+        Log(<span class="str">'checking %s'</span> % (s))
     <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380296428781.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"LinHuChun"</span>
-        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
-        <span class="kw">return</span> s
+        Log(<span class="str">'checking %s'</span> % (s))
     <span class="kw">elif</span> myLeftRegion.exists(Pattern(<img src="1380555446088.png" />).similar(<span class="dig">0.95</span>)):
         s=<span class="str">"MoonPrincess"</span>
-        <span class="kw">print</span>(<span class="str">'checking %s'</span> % (s))
-        <span class="kw">return</span> s
+        Log(<span class="str">'checking %s'</span> % (s))
     <span class="kw">else</span>:
         s=<span class="str">"NoMan"</span>
-        <span class="kw">print</span>(<span class="str">'Not a man I want!'</span>)
-        <span class="kw">return</span> s
+        Log(<span class="str">'Not a man I want!'</span>)
+    <span class="kw">return</span> s
 
 <span class="kw">def</span> gotoReset():
     ActionMethod(<img src="1380297823894.png" />)
@@ -284,7 +288,9 @@
         myRegion.<span class="skw">click</span>(<img src="1380299636431.png" />)
         myRegion.<span class="skw">wait</span>(<span class="dig">3</span>)
         <span class="kw">if</span> myRegion.exists(Pattern(<img src="1380382370695.png" />).similar(<span class="dig">0.95</span>)):
-            s = judgePeople()
+            s = judgeAcePeople()
+        <span class="kw">elif</span> myRegion.exists(Pattern(<img src="1380812852864.png" />).similar(<span class="dig">0.95</span>)):
+            s = judgeBClassPeople()
         <span class="kw">else</span>:
             s = <span class="str">"NoMan"</span>
     <span class="kw">else</span>:
@@ -321,7 +327,7 @@
             gotoReset()
         <span class="kw">else</span>:
             <span class="skw">popup</span>(<span class="str">"find people:%s"</span> % (s))
-            <span class="kw">break</span>
+            <span class="kw">return</span>
 
 <span class="cmt">####setting
 </span>

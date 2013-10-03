@@ -10,13 +10,13 @@ def ActionMethodWithRegion(region, pattern):
     return
 
 def Log(s):
-    wait(1)
     myText.focus()
     wait(1)
     type(s)
     wait(1)
-    myApp.focus()
+    type("\n")
     wait(1)
+    myApp.focus()
     return
 def ActionMethod(pattern):
     ActionMethodWithRegion(myRegion, pattern)
@@ -67,57 +67,61 @@ def failCondition():
     if myRegion.exists("1380298064898.png",10) == None:
         returnTopMenu()
         gotoReset()
-
-def judgePeople():
+def judgeBClassPeople():
+    myLeftRegion = leftRegion()
+    if myLeftRegion.exists(Pattern("1380812256013.png").similar(0.95)):
+        s="InWan"
+    elif myLeftRegion.exists(Pattern("1380812634032.png").similar(0.95)):
+        s = "GenYeoShen"
+    elif myLeftRegion.exists(Pattern("1380812733459.png").similar(0.95)):
+        s="ShenFaeFae"
+    elif myLeftRegion.exists(Pattern("1380812785030.png").similar(0.95)):
+        s="FanYao"
+    else:
+        s="NoMan"
+    Log('Got B Class Student %s' % s)
+    return s
+        
+def judgeAcePeople():
     myLeftRegion = leftRegion()
     if myLeftRegion.exists(Pattern("1380295688803.png").similar(0.95)):
         s="LiHuan"
-        print('checking %s' % (s))
-        return s
+        Log('checking %s' % (s))
     elif myLeftRegion.exists(Pattern("1380295744094.png").similar(0.95)):
         s="WanChunGeo"
-        print('checking %s' % (s))
-        return s
+        Log('checking %s' % (s))
     elif myLeftRegion.exists(Pattern("1380295814271.png").similar(0.95)):
         s="GenGeoChin"
-        print('checking %s' % (s))
-        return s
+        Log('checking %s' % (s))
     elif myLeftRegion.exists(Pattern("1380295886966.png").similar(0.95)):
         s="IKouChen"
-        print('checking %s' % (s))
+        Log('checking %s' % (s))
         return s
     elif myLeftRegion.exists(Pattern("1380295952501.png").similar(0.95)):
         s="TonLau"
-        print('checking %s' % (s))
-        return s
+        Log('checking %s' % (s))
     elif myLeftRegion.exists(Pattern("1380296000327.png").similar(0.95)):
         s="IanKou"
-        print('checking %s' % (s))
-        return s
+        Log('checking %s' % (s))
     elif myLeftRegion.exists(Pattern("1380296025439.png").similar(0.95)):
         s="WuIChi"
-        print('checking %s' % (s))
-        return s
+        Log('checking %s' % (s))
     elif myLeftRegion.exists(Pattern("1380296113406.png").similar(0.95)):
         s="ShiFunBuBai"
-        print('checking %s' % (s))
-        return s
+        Log('checking %s' % (s))
     elif myLeftRegion.exists(Pattern("1380296376446.png").similar(0.95)):
         s="LuCuLian"
-        print('checking %s' % (s))
-        return s
+        Log('checking %s' % (s))
     elif myLeftRegion.exists(Pattern("1380296428781.png").similar(0.95)):
         s="LinHuChun"
-        print('checking %s' % (s))
-        return s
+        Log('checking %s' % (s))
     elif myLeftRegion.exists(Pattern("1380555446088.png").similar(0.95)):
         s="MoonPrincess"
-        print('checking %s' % (s))
-        return s
+        Log('checking %s' % (s))    
     else:
         s="NoMan"
-        print('Not a man I want!')
-        return s
+        Log('Not a man I want!')
+    return s
 
 def gotoReset():
     ActionMethod("1380297823894.png")
@@ -212,7 +216,9 @@ def pickup100People():
         myRegion.click("1380299636431.png")
         myRegion.wait(3)
         if myRegion.exists(Pattern("1380382370695.png").similar(0.95)):
-            s = judgePeople()
+            s = judgeAcePeople()
+        elif myRegion.exists(Pattern("1380812852864.png").similar(0.95)):
+            s = judgeBClassPeople()
         else:
             s = "NoMan"
     else:
@@ -249,7 +255,7 @@ def runChoose():
             gotoReset()
         else:
             popup("find people:%s" % (s))
-            break
+            return
 
 ####setting
 

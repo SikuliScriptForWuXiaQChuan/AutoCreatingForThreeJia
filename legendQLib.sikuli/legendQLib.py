@@ -1,5 +1,44 @@
 from sikuli import * 
 
+# ActionMethodWithRegion
+# param region: In this given region, find and click the pattern in 30 sec.
+# param pattern: The target you want to click, which could be a string, pic or something else.
+# return: null
+def ActionMethodWithRegion(region, pattern):
+    region.wait(pattern, 30)
+    region.click(pattern)
+    return
+
+# ActionMethod
+# If myRegion exists, invoke ActionMethodWithRegion(myRegion, pattern)
+# param pattern: The target you want to click, which could be a string, pic or something else.
+# return: null
+def ActionMethod(pattern):
+    ActionMethodWithRegion(myRegion, pattern)
+    return
+
+# Log
+# For any textEditor you assign, type the log into.
+# param s: 
+# return: null
+def Log(s):
+    if myText:
+        wait(1)
+        myText.focus()
+        wait(1)
+        type(s)
+        wait(1)
+        myApp.focus()
+        wait(1)
+    else:
+        print(s)
+    return
+
+def closeSuprise():
+    while exists("1380743092036.png"):
+        click("1380743092036.png")
+        wait(1)
+
 # check region image is exists and click
 def checkClick(obj):
     if exists(obj):
@@ -76,57 +115,141 @@ def runTutorial(firstAce):
     click("1380695864981-3.png")
     return b
 
-# go to reset account
+# gotoreset
+# reset the account. Note, you have to invoke returnTopMenu before this method, for be suring that we could go from setting options.
+# return: null
 def gotoreset():
+<<<<<<< HEAD
     click("1380697566803.png")
     wait(2)
     click("1380697586833.png")
     reset(0, 0)
     #click("1380697620865.png")
 
+=======
+    ActionMethod("1380297823894.png")
+    ActionMethod("1380297843385.png")
+    myRegion.wait(3)
+    reset("1380292721591.png", "1380292736191.png")
+    myRegion.wait(3)
+    resetFailCondition()
+    return
+>>>>>>> 146fd5bcf5a15050813123a16a92d4d398fc06e2
 
+# leftRegion
+# The left screen of myRegion. To decrease the searching area for finding patterns.
+# return: null
 def leftRegion():
     return Region(myRegion.getX(), myRegion.getY(), myRegion.getW() / 2, myRegion.getH())
 
+# rightUpRegion
+# one-fouth of myRegion in RightUp side. For decreasing the searching area.
+# return: null
 def rightUpRegion():
     return Region(myRegion.getX() + (myRegion.getW() / 2), myRegion.getY(), myRegion.getW() / 2, myRegion.getH()/2)    
 
-# reset account
-def reset(a, b):   
-    tread = Settings.OcrTextRead
-    Settings.OcrTextRead = True
-    
-    regLeft = find("1380292721591.png")
-    regRight = find("1380292736191.png")
+#OCR method
+#param leftOfOCR: the picture which is left from OCR.
+#param rightOfOCR: the picture which is right from OCR
+#return: the OCR string in ASCII
+def OCR(leftOfOCR, rightOfOCR):
+    regLeft = myRegion.find(leftOfOCR)
+    regRight = myRegion.find(rightOfOCR)
     newX = regLeft.getX() + regLeft.getW()
     textReg = Region(newX, regLeft.getY(), regRight.getX() - newX, regLeft.getH())
-    print("%s, %s, %s, %s " % (textReg.getX(), textReg.getY(), textReg.getW(), textReg.getH()) )
     s = textReg.text()
     print('origin s:%s' % (s))
     s1 = s.replace(".","")
     s2 = s1.replace(" ","")
     s3 = filter(onlyascii, s2)
-    print('s:%s, s1:%s, s2:%s, s3:%s' % (s, s1, s2, s3))
-    click("1380293789145.png")
-    wait(3)
-    type(s3)
-    wait(3)
-    type("\r")
+    print ('after proofread: %s' % s3)
 
-    Settings.OcrTextRead = tread
-    
-    wait("1380294123754.png")
-    click("1380294123754.png")
+    return s3
 
-    wait(5)
-    if exists("1380294123754.png"):
-        returnTopMenu()
-        gotoreset()
+# fillRegCode
+# filling the regCode while reset the account.
+# param s: OCR string
+# return: null
+def fillRegCode(s):
+    myRegion.click("1380293789145-1.png")
+    myRegion.wait(3)
+    myRegion.type(s)
+    myRegion.wait(3)
+    type("\n")
+    ActionMethod("1380294123754-1.png")
+    return 
 
+# reset
+# reset this account in typing regCode screen.
+# param leftOfOCR: the left picture of OCR
+# param leftOfOCR: The right picture of OCR
+# return: null
+def reset(leftOfOCR, rightOfOCR):   
+    tread = Settings.OcrTextRead
+    Settings.OcrTextRead = True
+    s = OCR(leftOfOCR, rightOfOCR) 
+    fillRegCode(s)
+    resetFailCondition()
+    return
 
+# onlyascii
+# trim the string to exclude any non-ASCII char.
+# param char: Any string you want to process
+# return: A string excluding non-ASCII char
 def onlyascii(char):
     if ord(char) < 48 or ord(char) > 127: return ''
     else: return char
+
+# resetFailCondition
+# In the failure condition of reseting account, you should invoke this method to try again.
+# return: null
+def resetFailCondition():
+    if myRegion.exists("1380298064898.png",10) == None:
+        returnTopMenu()
+        gotoReset()
+    return
+
+# returnTopMenu
+# disable all window until the main screen is visible
+# param char: Any string you want to process
+# return: A string excluding non-ASCII char
+def returnTopMenu():
+    while myRegion.exists("1380302243814.png") == None:
+           
+        if clickXToBack(myRegion):
+            myRegion.wait(3)
+            continue
+        else:
+            break
+    myRegion.wait(1)
+    return
+
+# clickXToBack
+# click the X button. If the number of X button is bigger then 1, this methomd would click the x-button whose x position is the minimum of them.
+# param appRegion: searching region
+# return: null
+
+def clickXToBack(appRegion):
+    while True:
+        rValue = False
+        x1 = []
+        x2 = []
+        allArray = []
+        targetRegion =  rightUpRegion()
+        if targetRegion.exists("1380553164626.png"):
+            x1 = targetRegion.findAll("1380553164626.png")
+            allArray += x1
+        if targetRegion.exists("1380341000249.png"):
+            x2 = targetRegion.findAll("1380341000249.png")
+            allArray += x2
+        if not allArray:
+            return rValue
+        rValue = True
+        newList = sorted(allArray, key=lambda obj: obj.getX())
+        total = len(list(newList))
+        targetRegion.click(newList[0])
+        targetRegion.wait(3)
+    return rValue
 
 # pick student
 # param flag: student type | 0 Ace, 1 B, 2 C,D
@@ -163,6 +286,7 @@ def pickStudent(flag, obj):
     return ret
 
 # back to top menu
+<<<<<<< HEAD
 def returnTopMenu():
     while exists("1380725442905.png"):
         click("1380725442905.png")
@@ -178,6 +302,8 @@ def closeSuprise():
         wait(1)
 
 
+=======
+>>>>>>> 146fd5bcf5a15050813123a16a92d4d398fc06e2
 def skipBattle():
     print("skipBattle...")
     if exists("1380782430341.png", 20):

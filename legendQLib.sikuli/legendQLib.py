@@ -46,7 +46,7 @@ def runTutorial(firstAce):
     click("1380696510493-3.png")
     click("1380695864981-3.png")    
     waitAndClick("1380696677065-3.png", 10)
-    click("1380696735878-3.png")
+    click(Pattern("1380784407298.png").similar(0.90))
     click("1380696829107-3.png")
     click("1380696853984-3.png")
     click("1380695864981-3.png")
@@ -83,7 +83,7 @@ def gotoreset():
     click("1380697586833.png")
     reset(0, 0)
     #click("1380697620865.png")
-    # 文字辨試輸入
+
 
 def leftRegion():
     return Region(myRegion.getX(), myRegion.getY(), myRegion.getW() / 2, myRegion.getH())
@@ -224,9 +224,25 @@ def upToLv5AndGetGold():
     waitAndClick("1380741413769.png", 5)
     returnTopMenu()
 
+
+def protectChildElder(times):
+    click(Pattern("1380806541739.png").similar(0.80))
+    waitAndClick("1380806832421.png", 10)
+    # loop
+    for i in range(times):
+        waitAndClick("1380806695283.png", 4200)
+        skipBattle()
+        waitAndClick("1380695830359-2.png", 300)  
+        waitAndClick("1380806808028.png", 10)
+        closeSuprise()
+
+
 # test entry
 def testMain():
     openApp("BlueStacks")
-    upToLv5AndGetGold()
+    #upToLv5AndGetGold()
+    #protectChildElder(8)
+    print("abv")   
+    
 
 testMain()    

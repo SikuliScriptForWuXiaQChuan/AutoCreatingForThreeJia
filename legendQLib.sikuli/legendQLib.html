@@ -118,7 +118,7 @@
     <span class="skw">click</span>(<img src="1380696510493-3.png" />)
     <span class="skw">click</span>(<img src="1380695864981-3.png" />)
     waitAndClick(<img src="1380696677065-3.png" />, <span class="dig">10</span>)
-    <span class="skw">click</span>(<img src="1380696735878-3.png" />)
+    <span class="skw">click</span>(Pattern(<img src="1380784407298.png" />).similar(<span class="dig">0.90</span>))
     <span class="skw">click</span>(<img src="1380696829107-3.png" />)
     <span class="skw">click</span>(<img src="1380696853984-3.png" />)
     <span class="skw">click</span>(<img src="1380695864981-3.png" />)
@@ -155,8 +155,8 @@
     <span class="skw">click</span>(<img src="1380697586833.png" />)
     reset(<span class="dig">0</span>, <span class="dig">0</span>)
     <span class="cmt">#click("1380697620865.png")
-</span>    <span class="cmt"># 文字辨試輸入
 </span>
+
 <span class="kw">def</span> leftRegion():
     <span class="kw">return</span> Region(myRegion.getX(), myRegion.getY(), myRegion.getW() / <span class="dig">2</span>, myRegion.getH())
 
@@ -296,10 +296,26 @@
     waitAndClick(<img src="1380741413769.png" />, <span class="dig">5</span>)
     returnTopMenu()
 
+
+<span class="kw">def</span> protectChildElder(times):
+    <span class="skw">click</span>(Pattern(<img src="1380806541739.png" />).similar(<span class="dig">0.80</span>))
+    waitAndClick(<img src="1380806832421.png" />, <span class="dig">10</span>)
+    <span class="cmt"># loop
+</span>    <span class="kw">for</span> i <span class="kw">in</span> range(times):
+        waitAndClick(<img src="1380806695283.png" />, <span class="dig">4200</span>)
+        skipBattle()
+        waitAndClick(<img src="1380695830359-2.png" />, <span class="dig">300</span>)
+        waitAndClick(<img src="1380806808028.png" />, <span class="dig">10</span>)
+        closeSuprise()
+
+
 <span class="cmt"># test entry
 </span><span class="kw">def</span> testMain():
     openApp(<span class="str">"BlueStacks"</span>)
-    upToLv5AndGetGold()
+    <span class="cmt">#upToLv5AndGetGold()
+</span>    <span class="cmt">#protectChildElder(8)
+</span>    <span class="kw">print</span>(<span class="str">"abv"</span>)
+
 
 testMain()
 </pre>

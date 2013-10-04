@@ -35,8 +35,8 @@ def Log(s):
     return
 
 def closeSuprise():
-    while exists("1380743092036.png"):
-        click("1380743092036.png")
+    while exists("1380553164626.png"):
+        click("1380553164626.png")
         wait(1)
 
 # check region image is exists and click
@@ -61,58 +61,13 @@ def createGame(firstStudent):
 
 # run tutorial and expect Ace student
 def runTutorial(firstAce):
-    wait("1380695640309-3.png", 10)
-    click("1380724384033.png")
-    click("1380695762060-3.png")
-    wait("1380695815218-3.png", 30)
-    click("1380695830359-3.png")
-    click("1380695864981-3.png")
-    wait(2)
 
     stud = pickStudent(0, firstAce)
     print("stud: %s" % stud)
     b = 0
     if stud >= 4:
         b = 1
-    click("1380696105210-3.png")
-    click("1380696128810-3.png")
-    click("1380696149010-3.png")
-    click("1380695864981-3.png")
-    click("1380724384033-1.png")
-    click("1380695762060-3.png")
-    wait("1380696450966-3.png", 20)
-    click("1380695830359-3.png")
-    click("1380696510493-3.png")
-    click("1380695864981-3.png")    
-    waitAndClick("1380696677065-3.png", 10)
-    click(Pattern("1380784407298.png").similar(0.90))
-    click("1380696829107-3.png")
-    click("1380696853984-3.png")
-    click("1380695864981-3.png")
-    click("1380696903585-3.png")
-    click("1380696921992-3.png")
-    wait(2)
-    wait("1380696939217-3.png")
-    click("1380696939217-3.png")
-    wait(2)
-    click("1380695864981-3.png")
-    click("1380724384033-2.png")
-    click("1380697007266-3.png")
-    wait("1380695830359-3.png", 30)
-    click("1380695830359-3.png")
-    # level up
-    print("level up...")
-    wait("1380702038600-1.png", 5)
-    click("1380702038600-1.png")
 
-    print("check drop item...")
-    if exists("1380695515823-3.png"):
-        click("1380695515823-3.png")
-    print("close")   
-    if exists("1380696510493-2.png"):
-        click("1380696510493-2.png")
-    closeSuprise()
-    click("1380695864981-3.png")
     return b
 
 # gotoreset
@@ -220,7 +175,6 @@ def returnTopMenu():
 # click the X button. If the number of X button is bigger then 1, this methomd would click the x-button whose x position is the minimum of them.
 # param appRegion: searching region
 # return: null
-
 def clickXToBack(appRegion):
     while True:
         rValue = False
@@ -242,6 +196,56 @@ def clickXToBack(appRegion):
         targetRegion.click(newList[0])
         targetRegion.wait(3)
     return rValue
+
+# judgeAcelassPeople
+# checking if an A class student appeared.
+# return: the person's name. If the target is not on this lise, "NoMan" is returned.
+def judgeAcePeople():
+    myLeftRegion = leftRegion()
+    if myLeftRegion.exists(Pattern("1380295688803.png").similar(0.95)):
+        s="LiHuan"
+    elif myLeftRegion.exists(Pattern("1380295744094.png").similar(0.95)):
+        s="WanChunGeo"
+    elif myLeftRegion.exists(Pattern("1380295814271.png").similar(0.95)):
+        s="GenGeoChin"
+    elif myLeftRegion.exists(Pattern("1380295886966.png").similar(0.95)):
+        s="IKouChen"
+    elif myLeftRegion.exists(Pattern("1380295952501.png").similar(0.95)):
+        s="TonLau"
+    elif myLeftRegion.exists(Pattern("1380296000327.png").similar(0.95)):
+        s="IanKou"
+    elif myLeftRegion.exists(Pattern("1380296025439.png").similar(0.95)):
+        s="WuIChi"
+    elif myLeftRegion.exists(Pattern("1380296113406.png").similar(0.95)):
+        s="ShiFunBuBai"
+    elif myLeftRegion.exists(Pattern("1380296376446.png").similar(0.95)):
+        s="LuCuLian"
+    elif myLeftRegion.exists(Pattern("1380296428781.png").similar(0.95)):
+        s="LinHuChun"
+    elif myLeftRegion.exists(Pattern("1380555446088.png").similar(0.95)):
+        s="MoonPrincess"
+    else:
+        s="NoMan"
+    Log('checking %s' % (s))    
+    return s
+
+# judgeBClassPeople
+# to find the some B class of students who are powerful we want.
+# return: the person's name. If the target is not on this lise, "NoMan" is returned.
+def judgeBClassPeople():
+    myLeftRegion = leftRegion()
+    if myLeftRegion.exists(Pattern("1380812256013.png").similar(0.95)):
+        s="InWan"
+    elif myLeftRegion.exists(Pattern("1380812634032.png").similar(0.95)):
+        s = "GenYeoShen"
+    elif myLeftRegion.exists(Pattern("1380812733459.png").similar(0.95)):
+        s="ShenFaeFae"
+    elif myLeftRegion.exists(Pattern("1380812785030.png").similar(0.95)):
+        s="FanYao"
+    else:
+        s="NoMan"
+    Log('Got B Class Student %s' % s)
+    return s
 
 # pick student
 # param flag: student type | 0 Ace, 1 B, 2 C,D

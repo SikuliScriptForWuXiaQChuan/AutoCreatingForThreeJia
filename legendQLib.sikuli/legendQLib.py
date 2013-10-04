@@ -119,14 +119,6 @@ def runTutorial(firstAce):
 # reset the account. Note, you have to invoke returnTopMenu before this method, for be suring that we could go from setting options.
 # return: null
 def gotoreset():
-<<<<<<< HEAD
-    click("1380697566803.png")
-    wait(2)
-    click("1380697586833.png")
-    reset(0, 0)
-    #click("1380697620865.png")
-
-=======
     ActionMethod("1380297823894.png")
     ActionMethod("1380297843385.png")
     myRegion.wait(3)
@@ -134,7 +126,7 @@ def gotoreset():
     myRegion.wait(3)
     resetFailCondition()
     return
->>>>>>> 146fd5bcf5a15050813123a16a92d4d398fc06e2
+
 
 # leftRegion
 # The left screen of myRegion. To decrease the searching area for finding patterns.
@@ -285,25 +277,12 @@ def pickStudent(flag, obj):
     returnTopMenu()
     return ret
 
-# back to top menu
-<<<<<<< HEAD
-def returnTopMenu():
-    while exists("1380725442905.png"):
-        click("1380725442905.png")
-        wait(1)
-    if exists("1380695864981-3.png"):
-        click("1380695864981-3.png")
-        wait(1)
-        returnTopMenu()
 
 def closeSuprise():
-     while exists("1380743092036.png", 2):
-        click("1380743092036.png")
+     while exists("1380553164626.png", 2):
+        click("1380553164626.png")
         wait(1)
 
-
-=======
->>>>>>> 146fd5bcf5a15050813123a16a92d4d398fc06e2
 def skipBattle():
     print("skipBattle...")
     if exists("1380782430341.png", 20):

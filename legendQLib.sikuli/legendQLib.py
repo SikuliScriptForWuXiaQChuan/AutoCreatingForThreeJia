@@ -61,7 +61,7 @@ def createGame(firstStudent):
 
 # run tutorial and expect Ace student
 def runTutorial(firstAce):
-
+    #TODO by Change
     stud = pickStudent(0, firstAce)
     print("stud: %s" % stud)
     b = 0
@@ -197,88 +197,133 @@ def clickXToBack(appRegion):
         targetRegion.wait(3)
     return rValue
 
-# judgeAcelassPeople
-# checking if an A class student appeared.
-# return: the person's name. If the target is not on this lise, "NoMan" is returned.
-def judgeAcePeople():
-    myLeftRegion = leftRegion()
-    if myLeftRegion.exists(Pattern("1380295688803.png").similar(0.95)):
-        s="LiHuan"
-    elif myLeftRegion.exists(Pattern("1380295744094.png").similar(0.95)):
-        s="WanChunGeo"
-    elif myLeftRegion.exists(Pattern("1380295814271.png").similar(0.95)):
-        s="GenGeoChin"
-    elif myLeftRegion.exists(Pattern("1380295886966.png").similar(0.95)):
-        s="IKouChen"
-    elif myLeftRegion.exists(Pattern("1380295952501.png").similar(0.95)):
-        s="TonLau"
-    elif myLeftRegion.exists(Pattern("1380296000327.png").similar(0.95)):
-        s="IanKou"
-    elif myLeftRegion.exists(Pattern("1380296025439.png").similar(0.95)):
-        s="WuIChi"
-    elif myLeftRegion.exists(Pattern("1380296113406.png").similar(0.95)):
-        s="ShiFunBuBai"
-    elif myLeftRegion.exists(Pattern("1380296376446.png").similar(0.95)):
-        s="LuCuLian"
-    elif myLeftRegion.exists(Pattern("1380296428781.png").similar(0.95)):
-        s="LinHuChun"
-    elif myLeftRegion.exists(Pattern("1380555446088.png").similar(0.95)):
-        s="MoonPrincess"
+def mappingAClassPeople(s):
+    r = "None"
+
+    if s=="LiHuan":
+        r = Pattern("1380295688803.png").similar(0.95)
+    elif s=="WanChunGeo":
+        r = Pattern("1380295744094.png").similar(0.95)        
+    elif s=="IKouChen":
+        r = Pattern("1380295886966.png").similar(0.95)
+    elif s=="TonLau":
+        r=Pattern("1380295952501.png").similar(0.95)
+    elif s=="IanKou":
+        r=Pattern("1380296000327.png").similar(0.95):
+    elif s="WuIChi":
+        r=Pattern("1380296025439.png").similar(0.95)
+    elif s=="ShiFunBuBai":
+        r=Pattern("1380296113406.png").similar(0.95)
+    elif s=="LuCuLian":
+        r=Pattern("1380296376446.png").similar(0.95)
+    elif s=="LinHuChun":
+        r=Pattern("1380296428781.png").similar(0.95)
+    elif s=="MoonPrincess":
+        r=Pattern("1380555446088.png").similar(0.95)
     else:
-        s="NoMan"
-    Log('checking %s' % (s))    
-    return s
+        pass
 
-# judgeBClassPeople
-# to find the some B class of students who are powerful we want.
-# return: the person's name. If the target is not on this lise, "NoMan" is returned.
-def judgeBClassPeople():
-    myLeftRegion = leftRegion()
-    if myLeftRegion.exists(Pattern("1380812256013.png").similar(0.95)):
-        s="InWan"
-    elif myLeftRegion.exists(Pattern("1380812634032.png").similar(0.95)):
-        s = "GenYeoShen"
-    elif myLeftRegion.exists(Pattern("1380812733459.png").similar(0.95)):
-        s="ShenFaeFae"
-    elif myLeftRegion.exists(Pattern("1380812785030.png").similar(0.95)):
-        s="FanYao"
+    return r
+
+def mappingBClassPeople(s):
+    r="None"
+    if s == "InWan":
+        r = Pattern("1380812256013.png").similar(0.95)
+    elif  s == "GenYeoShen":
+        r = Pattern("1380812634032.png").similar(0.95)
+    elif s == "GenYeoShen": 
+        r = Pattern("1380812733459.png").similar(0.95)
+    elif s == "FanYao": 
+        r = Pattern("1380812785030.png").similar(0.95)
     else:
-        s="NoMan"
-    Log('Got B Class Student %s' % s)
-    return s
+        pass
+    return r
 
-# pick student
-# param flag: student type | 0 Ace, 1 B, 2 C,D
-# param obj: expect role
-# return: expect result bitmask: 0-note expected, 4-expected ; student type bitmask 0-A, 1-B, 2-C, 3-D 
-def pickStudent(flag, obj):
-    click("1380720199487.png")
-    if flag == 0:
-        wait(Pattern("1380710775636-1.png").similar(0.95), 10)
-        click(Pattern("1380710775636-1.png").similar(0.95))
-    elif flag == 1:
-        wait(Pattern("1380720222877.png").similar(0.95), 10)
-        click(Pattern("1380720222877.png").similar(0.95))
-    #else:
-        
-    wait(3);
+# LoginGame
+# 1.open BlueStacks
+# 2.get focus
+# 3.click the game's icon for entering game
+# return: return the app's region
+def loginGame():
+    myApp = openApp("BlueStacks")
+    wait(1)
+    myApp.focus()
+    wait(3)
+    myRegion = Region(myApp.focusedWindow())
+    myRegion.setAutoWaitTimeout(10)    
+    if myRegion.exists("1379952280943.png"):
+        myRegion.click("1379952290815.png")
+        ActionMethod("1379952311495.png")
+        wait(1)
+    return Region(myApp.focusedWindow())
 
-    lv = 0
-    if exists("1380721537747.png"):
-        lv = 0
-    elif exists("1380721548302.png"):
-        lv = 1
-    else:
-        lv = 2 
+# unlockProtection
+# Maybe the protection mission is locked, you should unlock it.
+def unlockProtection():
+    ActionMethod("1379865937421.png")
+    wait(1)
+    return
 
-    foundObj = 0
-    if obj != 0 and exists(obj):
-        foundObj = 4
-    ret = lv + foundObj    
-    print("pick ret: %s " % ret) 
-    wait("1380695974966-3.png", 20)
-    click("1380695974966-3.png")
+# protection
+# protect the TonLau, you should call this method after invoking enterAdventure()
+def protection():
+    if exists("1379784828302.png", 30):
+        click("1379784828302.png")
+        wait(2)
+        unlockProtection()
+        if exists("1379784985998.png"):
+            wait(1)
+        else:
+            if exists("1379785496704.png"):
+                click("1379785496704.png")
+        wait(60)
+    
+
+def enterAdventureMenu():
+    ActionMethod("1379783893694.png")
+    wait(1)
+
+def checkPeopleExist(names, classLevel):
+    if classLevel == 1:
+        for name in enumerate(names):
+            pattern = mappingAClassPeople(name)
+            if exists(pattern, 1):
+                return name
+    elif classLevel == 2:
+        for name in enumerate(names):
+            pattern = mappingBClassPeople(name)
+            if exists(pattern, 1):
+                return name
+    return "None"
+
+# pickStudent
+# 挑弟子. 請確定在主畫面才呼叫此method
+# param pickupType: 0 代表萬裡選一, 1代表百里選中
+# param names: 型態是list, 把你想要抽中的名字放list裡
+# return list[lv, name]: 表示抽中的結果, lv 代表是抽中等級, 1是甲級, 2是乙級, 3是丙丁級
+#                                      name是代表抽中的結果, 若名字為None, 表示不在程式清單之中
+def pickStudent(pickupType, names):
+    ActionMethod("1380720199487.png")
+    if pickupType == 0:
+        ActionMedthod(Pattern("1380710775636-1.png").similar(0.95))
+    elif pickupType == 1:
+        ActionMedthod(Pattern("1380720222877.png").similar(0.95))
+
+    lv = "0"
+    name = "None"
+    if exists("1380299636431-1.png", 30):
+        click("1380299636431-1.png")
+        wait(3)
+        if exists(Pattern("1380721537747.png").similar(0.95)):
+            name = checkPeopleExist(names, 1)  
+            lv = "1"
+        elif exists(Pattern("1380721548302.png").similar(0.95)):
+            name = checkPeopleExist(names, 2)
+            lv = "2"          
+        else: #TODO: you have to implement C, D class level here
+            lv = "3"            
     returnTopMenu()
+    ret = [lv, name]
     return ret
 
 
@@ -335,23 +380,19 @@ def upToLv5AndGetGold():
 
 
 def protectChildElder(times):
-    click(Pattern("1380806541739.png").similar(0.80))
-    waitAndClick("1380806832421.png", 10)
     # loop
     for i in range(times):
-        waitAndClick("1380806695283.png", 4200)
-        skipBattle()
-        waitAndClick("1380695830359-2.png", 300)  
-        waitAndClick("1380806808028.png", 10)
-        closeSuprise()
+        enterAdventureMenu()
+        protection()   
+        returnTopMenu()
 
 
 # test entry
 def testMain():
-    openApp("BlueStacks")
-    #upToLv5AndGetGold()
-    #protectChildElder(8)
-    print("abv")   
-    
+    myRegion = loginGame()
+    returnTopMenu()
+    protectChildElder(99999)
+    return
 
-testMain()    
+testMain()
+

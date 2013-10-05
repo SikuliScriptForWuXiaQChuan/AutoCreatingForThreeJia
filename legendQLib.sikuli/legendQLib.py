@@ -209,8 +209,8 @@ def mappingAClassPeople(s):
     elif s=="TonLau":
         r=Pattern("1380295952501.png").similar(0.95)
     elif s=="IanKou":
-        r=Pattern("1380296000327.png").similar(0.95):
-    elif s="WuIChi":
+        r=Pattern("1380296000327.png").similar(0.95)
+    elif s=="WuIChi":
         r=Pattern("1380296025439.png").similar(0.95)
     elif s=="ShiFunBuBai":
         r=Pattern("1380296113406.png").similar(0.95)

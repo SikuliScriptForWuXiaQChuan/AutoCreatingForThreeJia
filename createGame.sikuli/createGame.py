@@ -27,10 +27,11 @@ def main():
                 break
 
 def test():
-    openApp("BlueStacks")
+    #openApp("BlueStacks")
     #pickStudent(1, 0)
     #upToLv5AndGetGold()
-    legendQLib.gotoreset()
+    legendQLib.loginGame()
+    
 
 #main()
 test()

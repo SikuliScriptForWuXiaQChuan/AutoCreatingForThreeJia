@@ -80,14 +80,48 @@ def createGame(firstStudent):
     checkClick(firstStudent)
     checkClick("1380695515823-1.png")
 
+def ChanAnFight():
+    ActionMethod(Pattern("1380562324428.png").similar(0.50))
+    fight()
+    return
+
 # run tutorial and expect Ace student
 def runTutorial(firstAce):
-    #TODO by Change
-    stud = pickStudent(0, firstAce)
-    print("stud: %s" % stud)
-    b = 0
-    if stud >= 4:
-        b = 1
+    count = 1
+    while 1:
+        Log('starting pickup process %i time' % (count))
+        ActionMethod("1380298064898-1.png")
+        ActionMethod("1380298227453.png")
+        ActionMethod("1380298278558.png")
+        ChanAnFight()
+        ActionMethod("1380337327356.png")
+        returnTopMenu()
+        firstStudent()
+        buildFormat()
+        ChanAnFight()
+        ActionMethod("1380337327356.png")
+        ActionMethod("1380340309707.png")
+        returnTopMenu()
+        equip()
+        package()
+        ChanAnFight()
+        ActionMethod("1380337327356.png")
+        returnTopMenu()
+        pickupReturn=pickStudent(1,["FanYao", "InWan", "ShenFaiFai", "GenYeoShen"]) 
+        if pickupReturn[1] == "NoMan" AND picupReturn[0] >= 2:
+            Log('pick up people in %i time failure!' % (count))
+            count += 1
+            clickXToBack(myRegion)
+            gotoReset()
+        else:
+            popup("find people:%s" % (s))
+            return
+
+#    stud = pickStudent(0, firstAce)
+#    print("stud: %s" % stud)
+#    b = 0
+#    if stud >= 4:
+#        b = 1
 
     return b
 
@@ -230,8 +264,8 @@ def mappingAClassPeople(s):
     elif s=="TonLau":
         r=Pattern("1380295952501.png").similar(0.95)
     elif s=="IanKou":
-        r=Pattern("1380296000327.png").similar(0.95)
-    elif s=="WuIChi":
+        r=Pattern("1380296000327.png").similar(0.95):
+    elif s="WuIChi":
         r=Pattern("1380296025439.png").similar(0.95)
     elif s=="ShiFunBuBai":
         r=Pattern("1380296113406.png").similar(0.95)

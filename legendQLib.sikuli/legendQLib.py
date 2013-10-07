@@ -1,4 +1,6 @@
-from sikuli import * 
+# -*- coding: utf-8 -*-
+
+from sikuli import *
 
 # ActionMethodWithRegion
 # param region: In this given region, find and click the pattern in 30 sec.
@@ -63,7 +65,7 @@ def protectTonLauResult():
         click("1379810380156.png")
     elif exists("1379784900486.png"):
         click("1379784900486.png")
-   elif exists("1379960592944.png"):
+    elif exists("1379960592944.png"):
        click("1379960611444.png")
     else:
         returnValue = false
@@ -108,7 +110,7 @@ def runTutorial(firstAce):
         ActionMethod("1380337327356.png")
         returnTopMenu()
         pickupReturn=pickStudent(1,["FanYao", "InWan", "ShenFaiFai", "GenYeoShen"]) 
-        if pickupReturn[1] == "NoMan" AND picupReturn[0] >= 2:
+        if pickupReturn[1] == "NoMan" and pickupReturn[0] >= 2:
             Log('pick up people in %i time failure!' % (count))
             count += 1
             clickXToBack(myRegion)
@@ -264,8 +266,8 @@ def mappingAClassPeople(s):
     elif s=="TonLau":
         r=Pattern("1380295952501.png").similar(0.95)
     elif s=="IanKou":
-        r=Pattern("1380296000327.png").similar(0.95):
-    elif s="WuIChi":
+        r=Pattern("1380296000327.png").similar(0.95)
+    elif s=="WuIChi":
         r=Pattern("1380296025439.png").similar(0.95)
     elif s=="ShiFunBuBai":
         r=Pattern("1380296113406.png").similar(0.95)
@@ -441,7 +443,7 @@ def protectChildElder(times):
         protection()   
         returnTopMenu()
         r = true
-        while(r)
+        while(r):
             r=nextStep()
 
 

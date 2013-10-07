@@ -48,6 +48,27 @@ def checkClick(obj):
 def waitAndClick(obj, sec):
     wait(obj, sec)
     click(obj)
+    return
+
+def protectTonLauResult():
+    print("nextStep")
+    returnValue = true
+    if exists("1379785615163.png"):
+        click("1379785615163.png")
+    elif exists("1379785915692.png"):
+        click("1379785915692.png")
+    elif exists("1379785955990.png"):
+        click("1379785955990.png")
+    elif exists("1379810380156.png"):
+        click("1379810380156.png")
+    elif exists("1379784900486.png"):
+        click("1379784900486.png")
+   elif exists("1379960592944.png"):
+       click("1379960611444.png")
+    else:
+        returnValue = false
+    wait(1)
+    return returnValue
 
 # create game for first B studenet
 def createGame(firstStudent):
@@ -385,6 +406,10 @@ def protectChildElder(times):
         enterAdventureMenu()
         protection()   
         returnTopMenu()
+        r = true
+        while(r)
+            r=nextStep()
+
 
 
 # test entry

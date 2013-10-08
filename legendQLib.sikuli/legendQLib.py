@@ -16,7 +16,7 @@ def ActionMethodWithRegion(region, pattern):
 # param pattern: The target you want to click, which could be a string, pic or something else.
 # return: null
 def ActionMethod(pattern):
-    ActionMethodWithRegion(myRegion, pattern)
+    ActionMethodWithRegion(appRegion, pattern)
     return
 
 # Log
@@ -24,13 +24,13 @@ def ActionMethod(pattern):
 # param s: 
 # return: null
 def Log(s):
-    if myText:
+    if globalLogger:
         wait(1)
-        myText.focus()
+        globalLogger.focus()
         wait(1)
         type(s)
         wait(1)
-        myApp.focus()
+        globalLogger.focus()
         wait(1)
     else:
         print(s)
@@ -113,7 +113,7 @@ def runTutorial(firstAce):
         if pickupReturn[1] == "NoMan" and pickupReturn[0] >= 2:
             Log('pick up people in %i time failure!' % (count))
             count += 1
-            clickXToBack(myRegion)
+            clickXToBack(SCREEN)
             gotoReset()
         else:
             popup("find people:%s" % (s))
@@ -133,9 +133,9 @@ def runTutorial(firstAce):
 def gotoreset():
     ActionMethod("1380297823894.png")
     ActionMethod("1380297843385.png")
-    myRegion.wait(3)
+    wait(3)
     reset("1380292721591.png", "1380292736191.png")
-    myRegion.wait(3)
+    wait(3)
     resetFailCondition()
     return
 
@@ -144,12 +144,14 @@ def gotoreset():
 # The left screen of myRegion. To decrease the searching area for finding patterns.
 # return: null
 def leftRegion():
+    myRegion = SCREEN
     return Region(myRegion.getX(), myRegion.getY(), myRegion.getW() / 2, myRegion.getH())
 
 # rightUpRegion
 # one-fouth of myRegion in RightUp side. For decreasing the searching area.
 # return: null
 def rightUpRegion():
+    myRegion = SCREEN
     return Region(myRegion.getX() + (myRegion.getW() / 2), myRegion.getY(), myRegion.getW() / 2, myRegion.getH()/2)    
 
 #OCR method
@@ -157,8 +159,8 @@ def rightUpRegion():
 #param rightOfOCR: the picture which is right from OCR
 #return: the OCR string in ASCII
 def OCR(leftOfOCR, rightOfOCR):
-    regLeft = myRegion.find(leftOfOCR)
-    regRight = myRegion.find(rightOfOCR)
+    regLeft = find(leftOfOCR)
+    regRight = find(rightOfOCR)
     newX = regLeft.getX() + regLeft.getW()
     textReg = Region(newX, regLeft.getY(), regRight.getX() - newX, regLeft.getH())
     s = textReg.text()
@@ -175,10 +177,10 @@ def OCR(leftOfOCR, rightOfOCR):
 # param s: OCR string
 # return: null
 def fillRegCode(s):
-    myRegion.click("1380293789145-1.png")
-    myRegion.wait(3)
-    myRegion.type(s)
-    myRegion.wait(3)
+    click("1380293789145-1.png")
+    wait(3)
+    type(s)
+    wait(3)
     type("\n")
     ActionMethod("1380294123754-1.png")
     return 
@@ -208,7 +210,7 @@ def onlyascii(char):
 # In the failure condition of reseting account, you should invoke this method to try again.
 # return: null
 def resetFailCondition():
-    if myRegion.exists("1380298064898.png",10) == None:
+    if exists("1380298064898.png",10) == None:
         returnTopMenu()
         gotoReset()
     return
@@ -218,14 +220,13 @@ def resetFailCondition():
 # param char: Any string you want to process
 # return: A string excluding non-ASCII char
 def returnTopMenu():
-    while myRegion.exists("1380302243814.png") == None:
-           
-        if clickXToBack(myRegion):
-            myRegion.wait(3)
+    while exists("1380302243814.png") == None:   
+        if clickXToBack(SCREEN):
+            wait(3)
             continue
         else:
             break
-    myRegion.wait(1)
+    wait(1)
     return
 
 # clickXToBack
@@ -306,12 +307,10 @@ def loginGame():
     wait(1)
     myApp.focus()
     wait(3)
-    myRegion = Region(myApp.focusedWindow())
-    myRegion.setAutoWaitTimeout(10)    
-    if myRegion.exists("1379952280943.png"):
-        myRegion.click("1379952290815.png")
-        ActionMethod("1379952311495.png")
-        wait(1)
+    AppRegion = Region(myApp.focusedWindow())
+    AppRegion.setAutoWaitTimeout(10) 
+    ActionMethod("1379952311495.png")
+    wait(1)
     return Region(myApp.focusedWindow())
 
 # unlockProtection
@@ -331,9 +330,13 @@ def protection():
         if exists("1379784985998.png"):
             wait(1)
         else:
-            if exists("1379785496704.png"):
+            if exists("1381243077632.png"):
+                click("1381243077632.png")
+            elif exists("1379785496704.png"):
                 click("1379785496704.png")
-        wait(60)
+            else:
+                pass
+        wait(1)
     
 
 def enterAdventureMenu():
@@ -442,18 +445,12 @@ def protectChildElder(times):
         enterAdventureMenu()
         protection()   
         returnTopMenu()
-        r = true
-        while(r):
-            r=nextStep()
 
 
-
-# test entry
-def testMain():
-    myRegion = loginGame()
-    returnTopMenu()
-    protectChildElder(99999)
-    return
-
-testMain()
-
+myApp = openApp("BlueStacks")
+wait(1)
+myApp.focus()
+wait(3)
+appRegion = Region(myApp.focusedWindow())
+returnTopMenu()
+protectChildElder(99999)

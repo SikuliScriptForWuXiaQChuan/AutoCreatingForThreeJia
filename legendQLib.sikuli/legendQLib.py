@@ -304,20 +304,25 @@ def mappingBClassPeople(s):
 # return: return the app's region
 def loginGame():
     myApp = openApp("BlueStacks")
-    wait(1)
+    wait(3)
     myApp.focus()
     wait(3)
     AppRegion = Region(myApp.focusedWindow())
     AppRegion.setAutoWaitTimeout(10) 
-    ActionMethod("1379952311495.png")
-    wait(1)
+    if exists("1379952280943.png"):
+        click("1379952290815.png")
+        wait("1379952311495-1.png", 180)
+        click("1379952319422.png")
+        wait(1)
+
     return Region(myApp.focusedWindow())
 
 # unlockProtection
 # Maybe the protection mission is locked, you should unlock it.
 def unlockProtection():
-    ActionMethod("1379865937421.png")
-    wait(1)
+    if exists("1379865937421-1.png"):
+        click("1379865950512.png")
+        wait(3)
     return
 
 # protection
@@ -340,8 +345,10 @@ def protection():
     
 
 def enterAdventureMenu():
-    ActionMethod("1379783893694.png")
-    wait(1)
+    if exists("1379783893694-1.png"):
+        click("1379783893694-1.png")
+        wait(1)
+    return
 
 def checkPeopleExist(names, classLevel):
     if classLevel == 1:
@@ -399,7 +406,12 @@ def skipBattle():
         if exists("1380782771931.png", 20):
             click("1380782771931.png")
             
-
+def relogin():
+    if exists("1381338723630.png"):      
+        wait(1500)
+        ActionMethod("1381338749717.png")
+        ActionMethod("1379952311495-1.png")
+    return
 
 def upToLv5AndGetGold():
     click("1380724384033-3.png")
@@ -446,11 +458,32 @@ def protectChildElder(times):
         protection()   
         returnTopMenu()
 
+def tunLauNextStep():
+    returnValue = True
+    relogin()
+    if exists("1379785615163-1.png"):
+        click("1379785615163-1.png")
+    elif exists("1379785915692-1.png"):
+        click("1379785915692-1.png")
+    elif exists("1379785955990-1.png"):
+        click("1379785955990-1.png")
+    elif exists("1379810380156-1.png"):
+        click("1379810380156-1.png")
+    elif exists("1379784900486-1.png"):
+        click("1379784900486-1.png")
+    elif exists("1379960592944-1.png"):
+        click("1379960611444-1.png")
+    else:
+        returnValue = False
+    wait(2)
+    return returnValue
 
-myApp = openApp("BlueStacks")
-wait(1)
-myApp.focus()
-wait(3)
-appRegion = Region(myApp.focusedWindow())
-returnTopMenu()
-protectChildElder(9999999)
+while True:
+    loginGame()
+    r = True
+    while r:
+        r=tunLauNextStep()
+    enterAdventureMenu()
+    #eatChiken()
+    unlockProtection()  
+    protection()  

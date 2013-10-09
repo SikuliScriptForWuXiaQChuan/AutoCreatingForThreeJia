@@ -376,20 +376,25 @@
 </span><span class="cmt"># return: return the app's region
 </span><span class="kw">def</span> loginGame():
     myApp = openApp(<span class="str">"BlueStacks"</span>)
-    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">wait</span>(<span class="dig">3</span>)
     myApp.focus()
     <span class="skw">wait</span>(<span class="dig">3</span>)
     AppRegion = Region(myApp.focusedWindow())
     AppRegion.setAutoWaitTimeout(<span class="dig">10</span>)
-    ActionMethod(<img src="1379952311495.png" />)
-    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="kw">if</span> exists(<img src="1379952280943.png" />):
+        <span class="skw">click</span>(<img src="1379952290815.png" />)
+        <span class="skw">wait</span>(<img src="1379952311495-1.png" />, <span class="dig">180</span>)
+        <span class="skw">click</span>(<img src="1379952319422.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+
     <span class="kw">return</span> Region(myApp.focusedWindow())
 
 <span class="cmt"># unlockProtection
 </span><span class="cmt"># Maybe the protection mission is locked, you should unlock it.
 </span><span class="kw">def</span> unlockProtection():
-    ActionMethod(<img src="1379865937421.png" />)
-    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="kw">if</span> exists(<img src="1379865937421-1.png" />):
+        <span class="skw">click</span>(<img src="1379865950512.png" />)
+        <span class="skw">wait</span>(<span class="dig">3</span>)
     <span class="kw">return</span>
 
 <span class="cmt"># protection
@@ -412,8 +417,10 @@
 
 
 <span class="kw">def</span> enterAdventureMenu():
-    ActionMethod(<img src="1379783893694.png" />)
-    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="kw">if</span> exists(<img src="1379783893694-1.png" />):
+        <span class="skw">click</span>(<img src="1379783893694-1.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="kw">return</span>
 
 <span class="kw">def</span> checkPeopleExist(names, classLevel):
     <span class="kw">if</span> classLevel == <span class="dig">1</span>:
@@ -471,7 +478,12 @@
         <span class="kw">if</span> exists(<img src="1380782771931.png" />, <span class="dig">20</span>):
             <span class="skw">click</span>(<img src="1380782771931.png" />)
 
-
+<span class="kw">def</span> relogin():
+    <span class="kw">if</span> exists(<img src="1381338723630.png" />):
+        <span class="skw">wait</span>(<span class="dig">1500</span>)
+        ActionMethod(<img src="1381338749717.png" />)
+        ActionMethod(<img src="1379952311495-1.png" />)
+    <span class="kw">return</span>
 
 <span class="kw">def</span> upToLv5AndGetGold():
     <span class="skw">click</span>(<img src="1380724384033-3.png" />)
@@ -518,14 +530,35 @@
         protection()
         returnTopMenu()
 
+<span class="kw">def</span> tunLauNextStep():
+    returnValue = True
+    relogin()
+    <span class="kw">if</span> exists(<img src="1379785615163-1.png" />):
+        <span class="skw">click</span>(<img src="1379785615163-1.png" />)
+    <span class="kw">elif</span> exists(<img src="1379785915692-1.png" />):
+        <span class="skw">click</span>(<img src="1379785915692-1.png" />)
+    <span class="kw">elif</span> exists(<img src="1379785955990-1.png" />):
+        <span class="skw">click</span>(<img src="1379785955990-1.png" />)
+    <span class="kw">elif</span> exists(<img src="1379810380156-1.png" />):
+        <span class="skw">click</span>(<img src="1379810380156-1.png" />)
+    <span class="kw">elif</span> exists(<img src="1379784900486-1.png" />):
+        <span class="skw">click</span>(<img src="1379784900486-1.png" />)
+    <span class="kw">elif</span> exists(<img src="1379960592944-1.png" />):
+        <span class="skw">click</span>(<img src="1379960611444-1.png" />)
+    <span class="kw">else</span>:
+        returnValue = False
+    <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">return</span> returnValue
 
-myApp = openApp(<span class="str">"BlueStacks"</span>)
-<span class="skw">wait</span>(<span class="dig">1</span>)
-myApp.focus()
-<span class="skw">wait</span>(<span class="dig">3</span>)
-appRegion = Region(myApp.focusedWindow())
-returnTopMenu()
-protectChildElder(<span class="dig">9999999</span>)
+<span class="kw">while</span> True:
+    loginGame()
+    r = True
+    <span class="kw">while</span> r:
+        r=tunLauNextStep()
+    enterAdventureMenu()
+    <span class="cmt">#eatChiken()
+</span>    unlockProtection()
+    protection()
 </pre>
 </body>
 </html>

@@ -88,7 +88,7 @@
 </span><span class="cmt"># param pattern: The target you want to click, which could be a string, pic or something else.
 </span><span class="cmt"># return: null
 </span><span class="kw">def</span> ActionMethod(pattern):
-    ActionMethodWithRegion(appRegion, pattern)
+    ActionMethodWithRegion(SCREEN, pattern)
     <span class="kw">return</span>
 
 <span class="cmt"># Log
@@ -408,7 +408,7 @@
                 <span class="skw">click</span>(<img src="1379785496704.png" />)
             <span class="kw">else</span>:
                 <span class="kw">pass</span>
-        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="skw">wait</span>(<span class="dig">60</span>)
 
 
 <span class="kw">def</span> enterAdventureMenu():
@@ -525,7 +525,7 @@ myApp.focus()
 <span class="skw">wait</span>(<span class="dig">3</span>)
 appRegion = Region(myApp.focusedWindow())
 returnTopMenu()
-protectChildElder(<span class="dig">99999</span>)
+protectChildElder(<span class="dig">9999999</span>)
 </pre>
 </body>
 </html>

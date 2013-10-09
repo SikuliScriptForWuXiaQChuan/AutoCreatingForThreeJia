@@ -16,7 +16,7 @@ def ActionMethodWithRegion(region, pattern):
 # param pattern: The target you want to click, which could be a string, pic or something else.
 # return: null
 def ActionMethod(pattern):
-    ActionMethodWithRegion(appRegion, pattern)
+    ActionMethodWithRegion(SCREEN, pattern)
     return
 
 # Log
@@ -336,7 +336,7 @@ def protection():
                 click("1379785496704.png")
             else:
                 pass
-        wait(1)
+        wait(60)
     
 
 def enterAdventureMenu():
@@ -453,4 +453,4 @@ myApp.focus()
 wait(3)
 appRegion = Region(myApp.focusedWindow())
 returnTopMenu()
-protectChildElder(99999)
+protectChildElder(9999999)

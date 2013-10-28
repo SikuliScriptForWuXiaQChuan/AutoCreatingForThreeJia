@@ -461,7 +461,6 @@ def protectChildElder(times):
 
 def tunLauNextStep():
     returnValue = True
-    relogin()
     if exists("1379785615163-1.png"):
         click("1379785615163-1.png")
     elif exists("1379785915692-1.png"):
@@ -478,6 +477,7 @@ def tunLauNextStep():
         returnValue = False
     wait(2)
     return returnValue
+
 
 #Please run this script at main menu
 #strategy:
@@ -516,3 +516,4 @@ def main():
     return
 
 main()
+

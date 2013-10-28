@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 
 from sikuli import *
+import time
 
 # ActionMethodWithRegion
 # param region: In this given region, find and click the pattern in 30 sec.
 # param pattern: The target you want to click, which could be a string, pic or something else.
 # return: null
 def ActionMethodWithRegion(region, pattern):
-    region.wait(pattern, 30)
-    region.click(pattern)
+    if region.exists(pattern, 30):
+        region.click(pattern)
     return
 
 # ActionMethod
@@ -345,8 +346,8 @@ def protection():
     
 
 def enterAdventureMenu():
-    if exists("1379783893694-1.png"):
-        click("1379783893694-1.png")
+    if exists("1382398755443.png"):
+        click("1382398755443.png")
         wait(1)
     return
 
@@ -478,12 +479,40 @@ def tunLauNextStep():
     wait(2)
     return returnValue
 
-while True:
-    loginGame()
-    r = True
-    while r:
-        r=tunLauNextStep()
-    enterAdventureMenu()
-    #eatChiken()
-    unlockProtection()  
-    protection()  
+#Please run this script at main menu
+#strategy:
+# 0: minumus. Choosing this strategy for saving the amount of stars.
+# 1: consuming the stars for walking the travel as farest as possible. I mean, to add HP, power and speed by the algorithm in this strategy.
+
+def attackPagan(bloodLevel, powerLevel, fightLevel, strategy):
+    ActionMethod("1382972092381.png")
+    wait(1)
+    #maybe you should drag the scroll bar before clicking this button.
+    #todo item.
+    ActionMethod("1382972134747.png")
+    wait(1)
+    
+           
+    ActionMethod("1382972416613.png")
+    count = 0;
+    while True:
+        if count % 3 == 0:
+            chooseBuffer(strategy)
+        if exists("baibei"):
+            break;
+            
+    returnTopMenu()
+        
+    return
+
+#choose buffer in attacking pagans.
+#0: always choose the minimuns
+#1: choose 
+def chooseBuffer(strategy):
+    return
+
+def main():
+    attackPagan(35,60,999,1)
+    return
+
+main()

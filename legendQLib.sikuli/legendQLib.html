@@ -73,14 +73,15 @@
 <span class="cmt"># -*- coding: utf-8 -*-
 </span>
 <span class="kw">from</span> sikuli <span class="kw">import</span> *
+<span class="kw">import</span> time
 
 <span class="cmt"># ActionMethodWithRegion
 </span><span class="cmt"># param region: In this given region, find and click the pattern in 30 sec.
 </span><span class="cmt"># param pattern: The target you want to click, which could be a string, pic or something else.
 </span><span class="cmt"># return: null
 </span><span class="kw">def</span> ActionMethodWithRegion(region, pattern):
-    region.<span class="skw">wait</span>(pattern, <span class="dig">30</span>)
-    region.<span class="skw">click</span>(pattern)
+    <span class="kw">if</span> region.exists(pattern, <span class="dig">30</span>):
+        region.<span class="skw">click</span>(pattern)
     <span class="kw">return</span>
 
 <span class="cmt"># ActionMethod
@@ -417,8 +418,8 @@
 
 
 <span class="kw">def</span> enterAdventureMenu():
-    <span class="kw">if</span> exists(<img src="1379783893694-1.png" />):
-        <span class="skw">click</span>(<img src="1379783893694-1.png" />)
+    <span class="kw">if</span> exists(<img src="1382398755443.png" />):
+        <span class="skw">click</span>(<img src="1382398755443.png" />)
         <span class="skw">wait</span>(<span class="dig">1</span>)
     <span class="kw">return</span>
 
@@ -550,15 +551,43 @@
     <span class="skw">wait</span>(<span class="dig">2</span>)
     <span class="kw">return</span> returnValue
 
-<span class="kw">while</span> True:
-    loginGame()
-    r = True
-    <span class="kw">while</span> r:
-        r=tunLauNextStep()
-    enterAdventureMenu()
-    <span class="cmt">#eatChiken()
-</span>    unlockProtection()
-    protection()
+<span class="cmt">#Please run this script at main menu
+</span><span class="cmt">#strategy:
+</span><span class="cmt"># 0: minumus. Choosing this strategy for saving the amount of stars.
+</span><span class="cmt"># 1: consuming the stars for walking the travel as farest as possible. I mean, to add HP, power and speed by the algorithm in this strategy.
+</span>
+<span class="kw">def</span> attackPagan(bloodLevel, powerLevel, fightLevel, strategy):
+    ActionMethod(<img src="1382972092381.png" />)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="cmt">#maybe you should drag the scroll bar before clicking this button.
+</span>    <span class="cmt">#todo item.
+</span>    ActionMethod(<img src="1382972134747.png" />)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+
+
+    ActionMethod(<img src="1382972416613.png" />)
+    count = <span class="dig">0</span>;
+    <span class="kw">while</span> True:
+        <span class="kw">if</span> count % <span class="dig">3</span> == <span class="dig">0</span>:
+            chooseBuffer(strategy)
+        <span class="kw">if</span> exists(<span class="str">"baibei"</span>):
+            <span class="kw">break</span>;
+
+    returnTopMenu()
+
+    <span class="kw">return</span>
+
+<span class="cmt">#choose buffer in attacking pagans.
+</span><span class="cmt">#0: always choose the minimuns
+</span><span class="cmt">#1: choose 
+</span><span class="kw">def</span> chooseBuffer(strategy):
+    <span class="kw">return</span>
+
+<span class="kw">def</span> main():
+    attackPagan(<span class="dig">35</span>,<span class="dig">60</span>,<span class="dig">999</span>,<span class="dig">1</span>)
+    <span class="kw">return</span>
+
+main()
 </pre>
 </body>
 </html>

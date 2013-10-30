@@ -461,6 +461,7 @@ def protectChildElder(times):
 
 def tunLauNextStep():
     returnValue = True
+    relogin()
     if exists("1379785615163-1.png"):
         click("1379785615163-1.png")
     elif exists("1379785915692-1.png"):
@@ -478,7 +479,6 @@ def tunLauNextStep():
     wait(2)
     return returnValue
 
-
 #Please run this script at main menu
 #strategy:
 # 0: minumus. Choosing this strategy for saving the amount of stars.
@@ -488,7 +488,7 @@ def attackPagan(bloodLevel, powerLevel, fightLevel, strategy):
     ActionMethod("1382972092381.png")
     wait(1)
     #maybe you should drag the scroll bar before clicking this button.
-    #todo item.
+    #not sure if there is a todo item here.
     ActionMethod("1382972134747.png")
     wait(1)
     
@@ -496,10 +496,29 @@ def attackPagan(bloodLevel, powerLevel, fightLevel, strategy):
     ActionMethod("1382972416613.png")
     count = 0;
     while True:
+        #choosing the buf
+        if exists("1383152590100.png", 3):
+            click("1383152602260.png")            
+            
         if count % 3 == 0:
             chooseBuffer(strategy)
-        if exists("baibei"):
-            break;
+        wait(3)
+        if count < bloodLevel:
+            click("1383147528544.png")
+        elif count < powerLevel:
+            click("1383147591861.png")
+        else:
+            click("1383147608270.png")
+        if exists("1383147754936.png", 300):
+            if exists("1383148524918.png"): #win
+                ActionMethod("1383148543550.png")
+                continue
+            elif exists("1383155317544.png"):
+                break;
+                
+        
+            
+        count = count + 1
             
     returnTopMenu()
         
@@ -509,11 +528,37 @@ def attackPagan(bloodLevel, powerLevel, fightLevel, strategy):
 #0: always choose the minimuns
 #1: choose 
 def chooseBuffer(strategy):
+    if exists("1383147100622.png"):
+        
+        star30 = find("1383147100622.png")
+        star30Above = star30.above()
+        star15 = find("1383147158032.png")
+        star15Above = star15.above()
+
+        if star30Above.exists("1383147323931.png") or star30Above.exists("1383152924777.png"):
+            ActionMethod("1383149127633.png")
+        elif star15Above.exists("1383147323931.png") or star15Above.exists("1383152924777.png"):
+            ActionMethod("1383149194205.png")
+        else:
+            ActionMethod("1383152966293.png") 
+    return
+
+def allProtectAction():
+    while True:
+        loginGame()
+        r = True
+        while r:
+            relogin()
+            r=tunLauNextStep()
+        enterAdventureMenu()
+    #eatChiken()
+        unlockProtection()  
+        protection()    
     return
 
 def main():
-    attackPagan(35,60,999,1)
+    loginGame()
+    attackPagan(2, 3, 999, 0)
     return
 
 main()
-

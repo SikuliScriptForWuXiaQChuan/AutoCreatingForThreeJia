@@ -516,11 +516,11 @@ def attackPagan(bloodLevel, powerLevel, fightLevel, strategy):
         if exists("1383147754936.png", 300):
             if exists("1383148524918.png"): #win
                 ActionMethod("1383148543550.png")
+                count = count + 1
                 continue
             elif exists("1383155317544.png"): #lose
                 print "lose in %d level" % (count)
                 break;            
-        count = count + 1
     returnTopMenu()
         
     return

@@ -527,7 +527,7 @@ def attackPagan(bloodLevel, powerLevel, fightLevel, strategy):
 
 #choose buffer in attacking pagans.
 #0: always choose the minimuns
-#1: choose 
+#1: choose power, hp as possible
 def chooseBuffer(strategy):
     if strategy == 0:
         if exists("1383147100622.png"):
@@ -556,7 +556,6 @@ def allProtectAction():
             relogin()
             r=tunLauNextStep()
         enterAdventureMenu()
-    #eatChiken()
         unlockProtection()  
         protection()    
     return

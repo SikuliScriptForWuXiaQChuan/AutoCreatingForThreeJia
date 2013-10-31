@@ -494,7 +494,7 @@ def attackPagan(bloodLevel, powerLevel, fightLevel, strategy):
     
            
     ActionMethod("1382972416613.png")
-    count = 0;
+    count = 1
     while True:
         #choosing the buf
         if exists("1383152590100.png", 3):
@@ -505,21 +505,22 @@ def attackPagan(bloodLevel, powerLevel, fightLevel, strategy):
         wait(3)
         if count < bloodLevel:
             click("1383147528544.png")
+            print "attack blood %d level" % (count)
         elif count < powerLevel:
             click("1383147591861.png")
+            print "attack power %d level" % (count)
         else:
             click("1383147608270.png")
+            print "attack normal %d level" % (count)
+        wait(1)
         if exists("1383147754936.png", 300):
             if exists("1383148524918.png"): #win
                 ActionMethod("1383148543550.png")
                 continue
-            elif exists("1383155317544.png"):
-                break;
-                
-        
-            
+            elif exists("1383155317544.png"): #lose
+                print "lose in %d level" % (count)
+                break;            
         count = count + 1
-            
     returnTopMenu()
         
     return
@@ -558,7 +559,7 @@ def allProtectAction():
 
 def main():
     loginGame()
-    attackPagan(2, 3, 999, 0)
-    return
+    wait(3)
 
+    attackPagan(3, 8, 999999, 0)
 main()

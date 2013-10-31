@@ -32,6 +32,7 @@ unlockProtection()
 protection()
 ```
 意義分別說明如下:
+
 1. 進入奇遇
 2. 選擇保護童姥(並解鎖)
 3. 驅趕小賊

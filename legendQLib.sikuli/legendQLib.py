@@ -10,7 +10,9 @@ import time
 def ActionMethodWithRegion(region, pattern):
     if region.exists(pattern, 30):
         region.click(pattern)
-    return
+        return True
+    else:
+        return False
 
 # ActionMethod
 # If myRegion exists, invoke ActionMethodWithRegion(myRegion, pattern)
@@ -493,14 +495,16 @@ def attackPagan(bloodLevel, powerLevel, fightLevel, strategy):
     wait(1)
     
            
-    ActionMethod("1382972416613.png")
+    if not ActionMethod("1382972416613.png"):
+        ActionMethod("1383229332592.png")
+        
     count = 0
     while True:
         #choosing the buf
         if exists("1383152590100.png", 3):
             click("1383152602260.png")            
             
-        if count % 3 == 0:
+        if exists("1383229635258.png"):
             chooseBuffer(strategy)
         wait(3)
         if count < bloodLevel:
@@ -564,5 +568,5 @@ def main():
     loginGame()
     wait(3)
 
-    attackPagan(3, 8, 999999, 0)
+    attackPagan(10, 20, 999999, 1)
 main()

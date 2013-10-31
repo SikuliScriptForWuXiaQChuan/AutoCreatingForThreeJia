@@ -82,7 +82,9 @@
 </span><span class="kw">def</span> ActionMethodWithRegion(region, pattern):
     <span class="kw">if</span> region.exists(pattern, <span class="dig">30</span>):
         region.<span class="skw">click</span>(pattern)
-    <span class="kw">return</span>
+        <span class="kw">return</span> True
+    <span class="kw">else</span>:
+        <span class="kw">return</span> False
 
 <span class="cmt"># ActionMethod
 </span><span class="cmt"># If myRegion exists, invoke ActionMethodWithRegion(myRegion, pattern)
@@ -565,14 +567,16 @@
     <span class="skw">wait</span>(<span class="dig">1</span>)
 
 
-    ActionMethod(<img src="1382972416613.png" />)
+    <span class="kw">if</span> <span class="kw">not</span> ActionMethod(<img src="1382972416613.png" />):
+        ActionMethod(<img src="1383229332592.png" />)
+
     count = <span class="dig">0</span>
     <span class="kw">while</span> True:
         <span class="cmt">#choosing the buf
 </span>        <span class="kw">if</span> exists(<img src="1383152590100.png" />, <span class="dig">3</span>):
             <span class="skw">click</span>(<img src="1383152602260.png" />)
 
-        <span class="kw">if</span> count % <span class="dig">3</span> == <span class="dig">0</span>:
+        <span class="kw">if</span> exists(<img src="1383229635258.png" />):
             chooseBuffer(strategy)
         <span class="skw">wait</span>(<span class="dig">3</span>)
         <span class="kw">if</span> count &lt; bloodLevel:
@@ -588,11 +592,11 @@
         <span class="kw">if</span> exists(<img src="1383147754936.png" />, <span class="dig">300</span>):
             <span class="kw">if</span> exists(<img src="1383148524918.png" />): <span class="cmt">#win</span>
                 ActionMethod(<img src="1383148543550.png" />)
+                count = count + <span class="dig">1</span>
                 <span class="kw">continue</span>
             <span class="kw">elif</span> exists(<img src="1383155317544.png" />): <span class="cmt">#lose</span>
                 <span class="kw">print</span> <span class="str">"lose in %d level"</span> % (count)
                 <span class="kw">break</span>;
-        count = count + <span class="dig">1</span>
     returnTopMenu()
 
     <span class="kw">return</span>
@@ -601,19 +605,23 @@
 </span><span class="cmt">#0: always choose the minimuns
 </span><span class="cmt">#1: choose 
 </span><span class="kw">def</span> chooseBuffer(strategy):
-    <span class="kw">if</span> exists(<img src="1383147100622.png" />):
+    <span class="kw">if</span> strategy == <span class="dig">0</span>:
+        <span class="kw">if</span> exists(<img src="1383147100622.png" />):
 
-        star30 = <span class="skw">find</span>(<img src="1383147100622.png" />)
-        star30Above = star30.above()
-        star15 = <span class="skw">find</span>(<img src="1383147158032.png" />)
-        star15Above = star15.above()
+            star30 = <span class="skw">find</span>(<img src="1383147100622.png" />)
+            star30Above = star30.above()
+            star15 = <span class="skw">find</span>(<img src="1383147158032.png" />)
+            star15Above = star15.above()
 
-        <span class="kw">if</span> star30Above.exists(<img src="1383147323931.png" />) <span class="kw">or</span> star30Above.exists(<img src="1383152924777.png" />):
-            ActionMethod(<img src="1383149127633.png" />)
-        <span class="kw">elif</span> star15Above.exists(<img src="1383147323931.png" />) <span class="kw">or</span> star15Above.exists(<img src="1383152924777.png" />):
-            ActionMethod(<img src="1383149194205.png" />)
-        <span class="kw">else</span>:
-            ActionMethod(<img src="1383152966293.png" />)
+            <span class="kw">if</span> star30Above.exists(<img src="1383147323931.png" />) <span class="kw">or</span> star30Above.exists(<img src="1383152924777.png" />):
+                ActionMethod(<img src="1383149127633.png" />)
+            <span class="kw">elif</span> star15Above.exists(<img src="1383147323931.png" />) <span class="kw">or</span> star15Above.exists(<img src="1383152924777.png" />):
+                ActionMethod(<img src="1383149194205.png" />)
+            <span class="kw">else</span>:
+                ActionMethod(<img src="1383152966293.png" />)
+    <span class="kw">else</span>:
+        ActionMethod(<img src="1383152966293.png" />)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
     <span class="kw">return</span>
 
 <span class="kw">def</span> allProtectAction():
@@ -633,7 +641,7 @@
     loginGame()
     <span class="skw">wait</span>(<span class="dig">3</span>)
 
-    attackPagan(<span class="dig">3</span>, <span class="dig">8</span>, <span class="dig">999999</span>, <span class="dig">0</span>)
+    attackPagan(<span class="dig">10</span>, <span class="dig">20</span>, <span class="dig">999999</span>, <span class="dig">1</span>)
 main()
 </pre>
 </body>

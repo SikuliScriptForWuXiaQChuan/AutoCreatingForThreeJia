@@ -40,12 +40,12 @@ protection()
 以上範例只能保護一次, 如需要無窮盡保護下去, 可以使用下面這個範例:
 
 ```
-    while True:
-        r = True
-        while r:
-            relogin()
-            r=tunLauNextStep()
-        enterAdventureMenu()
-        unlockProtection()  
-        protection()  
+while True:
+    r = True
+    while r:
+        relogin()
+        r=tunLauNextStep()
+    enterAdventureMenu()
+    unlockProtection()  
+    protection()  
 ```

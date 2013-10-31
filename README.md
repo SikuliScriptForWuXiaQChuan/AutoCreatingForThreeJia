@@ -1,6 +1,8 @@
 AutoCreatingForThreeJia
 =======================
 ##前言
+![image](https://raw.github.com/SikuliScriptForWuXiaQChuan/AutoCreatingForThreeJia/master/ScreenShot/screenShot.png)<br/>
+
 這是武俠Q傳的自動化framework. 目前可以做到很多功能, 但我們只提供tool, 你需要自己依這些tool打造功能. 這個framework目前重要的功能計有:
 
 1. 保護童姥

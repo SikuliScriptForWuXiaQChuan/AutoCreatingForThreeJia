@@ -16,8 +16,8 @@ AutoCreatingForThreeJia
 3. 熟悉python語法
 
 ##Installation
-1. folk this repository
-2. `Import legendQLib` in your Sikuli program
+1. clone this repository on your PC/Mac
+2. `Import legendQLib` in your Sikuli programs
 3. Read the API and write your own automation script.
 
 ##Sample Code

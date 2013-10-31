@@ -1,7 +1,7 @@
 AutoCreatingForThreeJia
 =======================
 ##前言
-這是武俠Q傳的自動化framework. 目前可以做到很多功能, 但我們只提供tool, 你需要自己依這些tool打你要的功能.
+這是武俠Q傳的自動化framework. 目前可以做到很多功能, 但我們只提供tool, 你需要自己依這些tool打造功能.
 
 ##Requirement
 1. You are playing 武俠Q傳 on BlueStack in your PC/Mac

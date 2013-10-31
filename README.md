@@ -15,6 +15,13 @@ AutoCreatingForThreeJia
 2. Sikuli IDE(http://www.sikuli.org/)
 3. 熟悉python語法
 
+##Why Sikuli?
+Sikuli是很方便的自動化程式script, 以圖形比對為基礎, 有下面優點:
+
+1. 跨平台: 由於圖形比對相似度預設為0.75, 可避免掉跨平台不同導致的圖形失真問題. 相似度亦可在程式裡調整
+2. python語言, 易學易懂
+3. 以圖片觀點寫code, 省去計算一堆複雜position問題
+
 ##Installation
 1. clone this repository on your PC/Mac
 2. `Import legendQLib` in your Sikuli programs

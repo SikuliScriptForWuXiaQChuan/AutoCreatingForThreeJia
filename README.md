@@ -11,7 +11,7 @@ AutoCreatingForThreeJia
 目前作者有在使用的是1, 2兩項, 通常是半夜睡覺時在跑的. 至於第3個功能, 一個晚上大概能跑個5x次, 但能抽到作者心中理想弟子開局的機率, 實在太低;還不如跑童姥賺點銀倆實在.
 
 ##Requirement
-1. You are playing 武俠Q傳 on BlueStack in your PC/Mac
+1. You play 武俠Q傳(台) recently on BlueStack in your PC/Mac
 2. Sikuli IDE(http://www.sikuli.org/)
 3. 熟悉python語法
 

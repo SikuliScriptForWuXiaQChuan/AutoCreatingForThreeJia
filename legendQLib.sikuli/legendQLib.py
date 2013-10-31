@@ -494,7 +494,7 @@ def attackPagan(bloodLevel, powerLevel, fightLevel, strategy):
     
            
     ActionMethod("1382972416613.png")
-    count = 1
+    count = 0
     while True:
         #choosing the buf
         if exists("1383152590100.png", 3):

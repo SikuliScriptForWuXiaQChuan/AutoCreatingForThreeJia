@@ -557,8 +557,6 @@ def allProtectAction():
     return
 
 def main():
-    loginGame()
-    attackPagan(2, 3, 999, 0)
-    return
-
+    allProtectAction()
+    
 main()

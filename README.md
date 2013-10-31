@@ -41,7 +41,7 @@ attackPagan(3, 8, 999999, 0)
 * 0: 分別於30%以及15%找氣血, 武力. 有的話就加, 要不然就加3%</br>
 * 1: 永遠選擇3%</br>
 
-訊息輸出如下: (真汗顏, 奮戰打到68關就死了)<br/>
+執行過程訊息輸出如下: (奮戰打到68關就死了, 汗...)<br/>
 ![image](https://raw.github.com/SikuliScriptForWuXiaQChuan/AutoCreatingForThreeJia/master/ScreenShot/lose.png
 )<br/>
 

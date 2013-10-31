@@ -529,19 +529,23 @@ def attackPagan(bloodLevel, powerLevel, fightLevel, strategy):
 #0: always choose the minimuns
 #1: choose 
 def chooseBuffer(strategy):
-    if exists("1383147100622.png"):
-        
-        star30 = find("1383147100622.png")
-        star30Above = star30.above()
-        star15 = find("1383147158032.png")
-        star15Above = star15.above()
-
-        if star30Above.exists("1383147323931.png") or star30Above.exists("1383152924777.png"):
-            ActionMethod("1383149127633.png")
-        elif star15Above.exists("1383147323931.png") or star15Above.exists("1383152924777.png"):
-            ActionMethod("1383149194205.png")
-        else:
-            ActionMethod("1383152966293.png") 
+    if strategy == 0:
+        if exists("1383147100622.png"):
+            
+            star30 = find("1383147100622.png")
+            star30Above = star30.above()
+            star15 = find("1383147158032.png")
+            star15Above = star15.above()
+    
+            if star30Above.exists("1383147323931.png") or star30Above.exists("1383152924777.png"):
+                ActionMethod("1383149127633.png")
+            elif star15Above.exists("1383147323931.png") or star15Above.exists("1383152924777.png"):
+                ActionMethod("1383149194205.png")
+            else:
+                ActionMethod("1383152966293.png") 
+    else:
+        ActionMethod("1383152966293.png")
+    wait(1)
     return
 
 def allProtectAction():

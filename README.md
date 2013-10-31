@@ -40,6 +40,7 @@ attackPagan(3, 8, 999999, 0)
 * 1: 永遠選擇3%</br>
 
 ###保護童姥
+基本構成的method如下:
 ```
 enterAdventureMenu()
 unlockProtection()  
@@ -63,3 +64,4 @@ while True:
     unlockProtection()  
     protection()  
 ```
+也可以使用`protectChildElder(times)`, times是指要保護童姥幾次.

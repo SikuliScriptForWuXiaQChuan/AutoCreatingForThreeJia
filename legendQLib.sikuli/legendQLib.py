@@ -560,9 +560,6 @@ def allProtectAction():
         protection()    
     return
 
-def main():
-    loginGame()
-    wait(3)
-
-    attackPagan(3, 8, 999999, 0)
-main()
+def testFun():
+    print "running testFun"
+    return

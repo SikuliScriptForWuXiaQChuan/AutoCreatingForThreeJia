@@ -33,7 +33,7 @@ Sikuli是很方便的自動化程式script, 以圖形比對為基礎, 有下面�
 5. 測試是否可以使用, 先來個簡單的腳本, 如下圖<br/>
    ![image](https://raw.github.com/SikuliScriptForWuXiaQChuan/AutoCreatingForThreeJia/master/ScreenShot/test.png)<br/>
    如果可以看到訊息欄有出現 `running testFun`, 就代表lib 有import成功
-6. Read All APIs in this lib and write your own automation script. Enjot! :-)
+6. Read All APIs in this lib and write your own automation script. Enjoy! :-)
 
 ##TODO
 1. 創立帳號, 自動註冊

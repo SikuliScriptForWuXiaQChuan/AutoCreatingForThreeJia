@@ -3,7 +3,7 @@ AutoCreatingForThreeJia
 ##前言
 ![image](https://raw.github.com/SikuliScriptForWuXiaQChuan/AutoCreatingForThreeJia/master/ScreenShot/screenShot.png)<br/>
 
-這是武俠Q傳的自動化framework. 這個framework只提供tool, 想要使用的人必須依這些tool去打造功能. 這個framework目前可以做到的重要功能計有:
+這是武俠Q傳的自動化腳本framework. 這個framework只提供基礎動作的腳本(script), 想要使用的人必須依這些script function去打造功能, 意即, 你必須要自己寫程式. 這個framework目前可以做到的重要功能計有:
 
 1. 保護童姥
 2. 打魔教
@@ -16,6 +16,11 @@ AutoCreatingForThreeJia
 1. You play 武俠Q傳(台) recently on BlueStack in your PC/Mac
 2. Sikuli IDE(http://www.sikuli.org/)
 3. 熟悉python語法
+
+##免責聲明
+1. 請體諒作者基於分享的理念, 提供大家一個簡單的方式來自動化. 撰寫腳本程式碼是無償的, 搞不好對作者本身還百害無一利 (提供腳本出來大家練強了, 搞不好在論劍或是掠奪還會把作者打得落花流水呢!)! 所以如果有做不好的地方, 歡迎指正, 但請鞭小力一點.
+2. 使用本程式建構的動作, 請自行承擔風險. 最好你是熟悉python, 這樣你才能瞭解script 是在寫什麼, 做了什麼動作.
+
 
 ##Why Sikuli?
 Sikuli是很方便的自動化程式script, 以圖形比對為基礎, 有下面優點:

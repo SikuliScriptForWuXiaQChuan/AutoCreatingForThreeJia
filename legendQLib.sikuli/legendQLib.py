@@ -501,10 +501,12 @@ def attackPagan(bloodLevel, powerLevel, fightLevel, strategy):
     count = 0
     while True:
         #choosing the buf
+        wait(1)
         if exists("1383152590100.png", 3):
-            click("1383152602260.png")            
+            click("1383152602260.png")
+        wait(1)
             
-        if exists("1383229635258.png"):
+        if exists("1383229635258.png", 3):
             chooseBuffer(strategy)
         wait(3)
         if count < bloodLevel:
@@ -526,12 +528,14 @@ def attackPagan(bloodLevel, powerLevel, fightLevel, strategy):
                 print "lose in %d level" % (count)
                 break;            
     returnTopMenu()
-        
-    return
+
+    #return the level you are lost.
+    #You may adjust your policy to next attacking pagans.
+    return count
 
 #choose buffer in attacking pagans.
 #0: always choose the minimuns
-#1: choose power, hp as possible
+#1: choose 
 def chooseBuffer(strategy):
     if strategy == 0:
         if exists("1383147100622.png"):
@@ -560,13 +564,13 @@ def allProtectAction():
             relogin()
             r=tunLauNextStep()
         enterAdventureMenu()
+    #eatChiken()
         unlockProtection()  
         protection()    
     return
 
 def main():
-    loginGame()
-    wait(3)
-
-    attackPagan(10, 20, 999999, 1)
+    allProtectAction()
+    return
+    
 main()

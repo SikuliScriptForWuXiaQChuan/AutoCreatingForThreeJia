@@ -573,10 +573,12 @@
     count = <span class="dig">0</span>
     <span class="kw">while</span> True:
         <span class="cmt">#choosing the buf
-</span>        <span class="kw">if</span> exists(<img src="1383152590100.png" />, <span class="dig">3</span>):
+</span>        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="kw">if</span> exists(<img src="1383152590100.png" />, <span class="dig">3</span>):
             <span class="skw">click</span>(<img src="1383152602260.png" />)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
 
-        <span class="kw">if</span> exists(<img src="1383229635258.png" />):
+        <span class="kw">if</span> exists(<img src="1383229635258.png" />, <span class="dig">3</span>):
             chooseBuffer(strategy)
         <span class="skw">wait</span>(<span class="dig">3</span>)
         <span class="kw">if</span> count &lt; bloodLevel:
@@ -599,7 +601,9 @@
                 <span class="kw">break</span>;
     returnTopMenu()
 
-    <span class="kw">return</span>
+    <span class="cmt">#return the level you are lost.
+</span>    <span class="cmt">#You may adjust your policy to next attacking pagans.
+</span>    <span class="kw">return</span> count
 
 <span class="cmt">#choose buffer in attacking pagans.
 </span><span class="cmt">#0: always choose the minimuns
@@ -638,10 +642,9 @@
     <span class="kw">return</span>
 
 <span class="kw">def</span> main():
-    loginGame()
-    <span class="skw">wait</span>(<span class="dig">3</span>)
+    allProtectAction()
+    <span class="kw">return</span>
 
-    attackPagan(<span class="dig">10</span>, <span class="dig">20</span>, <span class="dig">999999</span>, <span class="dig">1</span>)
 main()
 </pre>
 </body>

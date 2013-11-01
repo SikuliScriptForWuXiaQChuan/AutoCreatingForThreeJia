@@ -3,7 +3,7 @@ AutoCreatingForThreeJia
 ##前言
 ![image](https://raw.github.com/SikuliScriptForWuXiaQChuan/AutoCreatingForThreeJia/master/ScreenShot/screenShot.png)<br/>
 
-這是武俠Q傳的自動化framework. 這個framework只提供tool, 想要使用的人必須依這些tool去打造功能. 這個framework目前可以做到的重要功能計有:
+這是武俠Q傳的自動化腳本framework. 這個framework只提供基礎動作的腳本(script), 想要使用的人必須依這些script function去打造功能, 意即, 你必須要自己寫程式. 這個framework目前可以做到的重要功能計有:
 
 1. 保護童姥
 2. 打魔教
@@ -17,6 +17,11 @@ AutoCreatingForThreeJia
 2. Sikuli IDE(http://www.sikuli.org/)
 3. 熟悉python語法
 
+##免責聲明
+1. 請體諒作者基於分享的理念, 提供大家一個簡單的方式來自動化. 撰寫腳本程式碼是無償的, 搞不好對作者本身還百害無一利 (提供腳本出來大家練強了, 搞不好在論劍或是掠奪還會把作者打得落花流水呢!)! 所以如果有做不好的地方, 歡迎指正, 但請鞭小力一點.
+2. 使用本程式建構的動作, 請自行承擔風險. 最好你是熟悉python, 這樣你才能瞭解script 是在寫什麼, 做了什麼動作.
+
+
 ##Why Sikuli?
 Sikuli是很方便的自動化程式script, 以圖形比對為基礎, 有下面優點:
 
@@ -27,8 +32,20 @@ Sikuli是很方便的自動化程式script, 以圖形比對為基礎, 有下面�
 
 ##Installation
 1. clone this repository on your PC/Mac
-2. `Import legendQLib` in your Sikuli programs
-3. Read the API and write your own automation script.
+2. 下載sikuli IDE from http://www.sikuli.org/
+3. 新建一個新的sikuli檔案, 需與repository裡的legendQLib.sikuli 同一個目錄
+4. 於你的sikuli 腳本裡import 本library, `import legendQLib`
+5. 測試是否可以使用, 先來個簡單的腳本, 如下圖<br/>
+   ![image](https://raw.github.com/SikuliScriptForWuXiaQChuan/AutoCreatingForThreeJia/master/ScreenShot/test.png)<br/>
+   如果可以看到訊息欄有出現 `running testFun`, 就代表lib 有import成功
+6. Read All APIs in this lib and write your own automation script. Enjoy! :-)
+
+##TODO
+1. 創立帳號, 自動註冊
+2. 登入不同server 
+3. 每日翻牌與簽到
+4. 刷四甲
+5. 定時打不敗
 
 ##Sample Code
 ###打魔教
@@ -38,13 +55,28 @@ attackPagan(3, 8, 999999, 0)
 參數意義:</br>
 從主畫面出發, 血戰打到第3關, 力戰打到第8關, 奮戰打到第999999關(等於無窮盡打下去), buff策略為 `0`, buff 策略目前僅提供兩策略:
 
-* 0: 分別於30%以及15%找氣血, 武力. 有的話就加, 要不然就加3%</br>
-* 1: 永遠選擇3%</br>
+* 0: 分別於30%以及15%找氣血, 武力. 有的話就加, 要不然就加3%
+* 1: 永遠選擇3%
 
 執行過程訊息輸出如下: (奮戰打到68關就死了, 汗...)<br/>
 ![image](https://raw.github.com/SikuliScriptForWuXiaQChuan/AutoCreatingForThreeJia/master/ScreenShot/lose.png
 )<br/>
 
+Sample Code:
+```
+import legendQLib
+
+legendQLib.loginGame() #開啟BlueStack, 並進入至主畫面
+wait(1)
+legendQLib.attackPagan(30, 40, 99999, 0) #血戰打到第30關, 力戰40戰, 奮戰無窮, buff 策略 0
+wait(1)
+legendQLib.attackPagan(30, 40, 99999, 0) #血戰打到第30關, 力戰40戰, 奮戰無窮, buff 策略 0
+wait(1)
+legendQLib.attackPagan(20, 30, 99999, 1) #血戰打到第20關, 力戰30戰, 奮戰無窮, buff 策略 1
+wait(1)
+
+```
+<br/>
 ###保護童姥
 基本構成的method如下:
 ```

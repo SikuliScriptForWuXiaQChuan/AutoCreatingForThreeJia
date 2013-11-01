@@ -569,8 +569,7 @@ def allProtectAction():
         protection()    
     return
 
-def main():
-    allProtectAction()
+def testFun():
+    print "running testFun"
     return
-    
-main()
+

@@ -76,6 +76,34 @@ legendQLib.attackPagan(20, 30, 99999, 1) #血戰打到第20關, 力戰30戰, 奮
 wait(1)
 
 ```
+
+`attackPagan()`會回傳最後是打到哪一關; 依巴哈版友建議的測試打魔教方法, 可以再修正上述的程式, 如下:<br/>
+```
+# -*- coding: utf-8 -*-
+
+import legendQLib
+
+#打開BlueStack並開啟武俠Q傳
+loginGame()
+
+#第一次打血戰, 看能打到哪一關
+firstAttackingLevel = attackPagan(99999, 0, 0, 0)
+wait(1)
+
+#血戰關數減3
+bloodLevel = firstAttackingLevel - 3
+
+#承上, 打完血戰後打力戰, 看可以打到哪一關
+secondAttackingLevel = attackPagan(bloodLevel, 99999, 0, 0)
+
+#力戰關數減3
+powerLevel = secondAttackingLevel - 3
+wait(1)
+
+#第三次打完血戰, 力戰後, 就無盡奮戰下去
+attackPagan(bloodLevel, powerLevel, 99999, 0)
+
+```
 <br/>
 ###保護童姥
 基本構成的method如下:

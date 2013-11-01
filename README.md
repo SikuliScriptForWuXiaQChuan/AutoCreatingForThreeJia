@@ -27,8 +27,13 @@ Sikuli是很方便的自動化程式script, 以圖形比對為基礎, 有下面�
 
 ##Installation
 1. clone this repository on your PC/Mac
-2. `Import legendQLib` in your Sikuli programs
-3. Read the API and write your own automation script.
+2. 下載sikuli IDE from http://www.sikuli.org/
+3. 新建一個新的sikuli檔案, 需與repository裡的legendQLib.sikuli 同一個目錄
+4. 於你的sikuli 腳本裡import 本library, `import legendQLib`
+5. 測試是否可以使用, 先來個簡單的腳本, 如下圖
+   ![image](https://raw.github.com/SikuliScriptForWuXiaQChuan/AutoCreatingForThreeJia/master/ScreenShot/test.png)<br/>
+   如果可以看到訊息欄有出現 `running testFun`, 就代表lib 有import成功
+6. Read All APIs in this lib and write your own automation script. Enjot! :-)
 
 ##TODO
 1. 創立帳號, 自動註冊

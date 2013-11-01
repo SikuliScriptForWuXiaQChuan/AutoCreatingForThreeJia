@@ -30,6 +30,11 @@ Sikuli是很方便的自動化程式script, 以圖形比對為基礎, 有下面�
 2. `Import legendQLib` in your Sikuli programs
 3. Read the API and write your own automation script.
 
+##TODO
+1. 創立帳號, 自動註冊
+2. 每日翻牌與簽到
+3. 刷四甲
+
 ##Sample Code
 ###打魔教
 ```

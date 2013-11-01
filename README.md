@@ -1,14 +1,16 @@
 AutoCreatingForThreeJia
 =======================
 ##前言
-這是武俠Q傳的自動化framework. 目前可以做到很多功能, 但我們只提供tool, 你需要自己依這些tool打造功能. 這個framework目前重要的功能計有:
+![image](https://raw.github.com/SikuliScriptForWuXiaQChuan/AutoCreatingForThreeJia/master/ScreenShot/screenShot.png)<br/>
+
+這是武俠Q傳的自動化framework. 這個framework只提供tool, 想要使用的人必須依這些tool去打造功能. 這個framework目前可以做到的重要功能計有:
 
 1. 保護童姥
 2. 打魔教
 3. 自動開局, 升級, 抽三甲; 抽完三甲後, 判斷所有弟子是不是你要的(把弟子名稱當參數丟進程式, 包含強乙弟子), 若不是就重置再開局一次.
-4. 其他...(懶得想了)
+4. 其他(懶得想了).
 
-目前作者有在使用的是1, 2兩項, 通常是半夜睡覺時在跑的. 至於第3個功能, 一個晚上大概能跑個5x次, 但能抽到作者心中理想弟子開局的機率, 實在太低;還不如跑童姥賺點銀倆實在.
+目前作者有在使用的是1, 2兩項, 通常是半夜睡覺時在跑的. 至於第3個功能, 一個晚上大概能跑個5x次, 但能抽到作者心中理想弟子開局的機率, 實在太低; 還不如跑童姥賺點銀倆實在. 當然, 你也可以把這些method湊一湊, 寫一個script既可以保護童姥, 又能打魔教, 還能去開局抽三甲. It depends on you! 
 
 ##Requirement
 1. You play 武俠Q傳(台) recently on BlueStack in your PC/Mac
@@ -28,6 +30,13 @@ Sikuli是很方便的自動化程式script, 以圖形比對為基礎, 有下面�
 2. `Import legendQLib` in your Sikuli programs
 3. Read the API and write your own automation script.
 
+##TODO
+1. 創立帳號, 自動註冊
+2. 登入不同server 
+3. 每日翻牌與簽到
+4. 刷四甲
+5. 定時打不敗
+
 ##Sample Code
 ###打魔教
 ```
@@ -38,6 +47,10 @@ attackPagan(3, 8, 999999, 0)
 
 * 0: 分別於30%以及15%找氣血, 武力. 有的話就加, 要不然就加3%</br>
 * 1: 永遠選擇3%</br>
+
+執行過程訊息輸出如下: (奮戰打到68關就死了, 汗...)<br/>
+![image](https://raw.github.com/SikuliScriptForWuXiaQChuan/AutoCreatingForThreeJia/master/ScreenShot/lose.png
+)<br/>
 
 ###保護童姥
 基本構成的method如下:

@@ -300,26 +300,39 @@ def mappingBClassPeople(s):
         pass
     return r
 
+def loginGameOnWindows(appPath):
+    myApp = openApp(appPath)
+    wait(3)
+    myApp.focus()
+    wait(3)
+    AppRegion = Region(myApp.focusedWindow())
+    AppRegion.setAutoWaitTimeout(10) 
+    enterGame()
+    
+    return AppRegion
+
 # LoginGame
 # 1.open BlueStacks
 # 2.get focus
 # 3.click the game's icon for entering game
 # return: return the app's region
-def loginGame():
+def loginGameOnMac():
     myApp = openApp("BlueStacks")
     wait(3)
     myApp.focus()
     wait(3)
     AppRegion = Region(myApp.focusedWindow())
     AppRegion.setAutoWaitTimeout(10) 
+    #nterGame()
+
+    return AppRegion
+
+def enterGame():
     if exists("1379952280943.png"):
-        click("1379952290815.png")
-        wait("1379952311495-1.png", 180)
-        click("1379952319422.png")
-        wait(1)
-
-    return Region(myApp.focusedWindow())
-
+        ActionMethod("1379952290815.png")
+    if exists("1379952311495-1.png", 180):
+        ActionMethod("1379952319422.png")
+    return
 # unlockProtection
 # Maybe the protection mission is locked, you should unlock it.
 def unlockProtection():
@@ -458,8 +471,11 @@ def protectChildElder(times):
     # loop
     for i in range(times):
         enterAdventureMenu()
+        unlockProtection()
         protection()   
-        returnTopMenu()
+        r = True
+        while r:
+            r=tunLauNextStep()
 
 def tunLauNextStep():
     returnValue = True
@@ -558,15 +574,8 @@ def chooseBuffer(strategy):
 
 def allProtectAction():
     while True:
-        loginGame()
-        r = True
-        while r:
-            relogin()
-            r=tunLauNextStep()
-        enterAdventureMenu()
-    #eatChiken()
-        unlockProtection()  
-        protection()    
+        print "protect action"
+        protectChildElder(1)
     return
 
 def testFun():

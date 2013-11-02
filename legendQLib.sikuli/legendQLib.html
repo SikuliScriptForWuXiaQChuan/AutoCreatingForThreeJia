@@ -372,26 +372,39 @@
         <span class="kw">pass</span>
     <span class="kw">return</span> r
 
+<span class="kw">def</span> loginGameOnWindows(appPath):
+    myApp = openApp(appPath)
+    <span class="skw">wait</span>(<span class="dig">3</span>)
+    myApp.focus()
+    <span class="skw">wait</span>(<span class="dig">3</span>)
+    AppRegion = Region(myApp.focusedWindow())
+    AppRegion.setAutoWaitTimeout(<span class="dig">10</span>)
+    enterGame()
+
+    <span class="kw">return</span> AppRegion
+
 <span class="cmt"># LoginGame
 </span><span class="cmt"># 1.open BlueStacks
 </span><span class="cmt"># 2.get focus
 </span><span class="cmt"># 3.click the game's icon for entering game
 </span><span class="cmt"># return: return the app's region
-</span><span class="kw">def</span> loginGame():
+</span><span class="kw">def</span> loginGameOnMac():
     myApp = openApp(<span class="str">"BlueStacks"</span>)
     <span class="skw">wait</span>(<span class="dig">3</span>)
     myApp.focus()
     <span class="skw">wait</span>(<span class="dig">3</span>)
     AppRegion = Region(myApp.focusedWindow())
     AppRegion.setAutoWaitTimeout(<span class="dig">10</span>)
+    <span class="cmt">#nterGame()
+</span>
+    <span class="kw">return</span> AppRegion
+
+<span class="kw">def</span> enterGame():
     <span class="kw">if</span> exists(<img src="1379952280943.png" />):
-        <span class="skw">click</span>(<img src="1379952290815.png" />)
-        <span class="skw">wait</span>(<img src="1379952311495-1.png" />, <span class="dig">180</span>)
-        <span class="skw">click</span>(<img src="1379952319422.png" />)
-        <span class="skw">wait</span>(<span class="dig">1</span>)
-
-    <span class="kw">return</span> Region(myApp.focusedWindow())
-
+        ActionMethod(<img src="1379952290815.png" />)
+    <span class="kw">if</span> exists(<img src="1379952311495-1.png" />, <span class="dig">180</span>):
+        ActionMethod(<img src="1379952319422.png" />)
+    <span class="kw">return</span>
 <span class="cmt"># unlockProtection
 </span><span class="cmt"># Maybe the protection mission is locked, you should unlock it.
 </span><span class="kw">def</span> unlockProtection():
@@ -530,8 +543,11 @@
     <span class="cmt"># loop
 </span>    <span class="kw">for</span> i <span class="kw">in</span> range(times):
         enterAdventureMenu()
+        unlockProtection()
         protection()
-        returnTopMenu()
+        r = True
+        <span class="kw">while</span> r:
+            r=tunLauNextStep()
 
 <span class="kw">def</span> tunLauNextStep():
     returnValue = True
@@ -630,22 +646,13 @@
 
 <span class="kw">def</span> allProtectAction():
     <span class="kw">while</span> True:
-        loginGame()
-        r = True
-        <span class="kw">while</span> r:
-            relogin()
-            r=tunLauNextStep()
-        enterAdventureMenu()
-    <span class="cmt">#eatChiken()
-</span>        unlockProtection()
-        protection()
+        <span class="kw">print</span> <span class="str">"protect action"</span>
+        protectChildElder(<span class="dig">1</span>)
     <span class="kw">return</span>
 
-<span class="kw">def</span> main():
-    allProtectAction()
+<span class="kw">def</span> testFun():
+    <span class="kw">print</span> <span class="str">"running testFun"</span>
     <span class="kw">return</span>
-
-main()
 </pre>
 </body>
 </html>

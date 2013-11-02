@@ -125,10 +125,20 @@ protection()
 while True:
     r = True
     while r:
-        relogin()
         r=tunLauNextStep()
     enterAdventureMenu()
     unlockProtection()  
     protection()  
 ```
 也可以使用`protectChildElder(times)`, times是指要保護童姥幾次.
+或是`allProtectAction`來無窮盡保護.
+以下是作者每天晚上跑的保護童姥片斷內容.
+
+```
+# -*- coding: utf-8 -*-
+
+import legendQLib
+
+legendQLib.loginGameOnMac()
+legendQLib.allProtectAction()
+```

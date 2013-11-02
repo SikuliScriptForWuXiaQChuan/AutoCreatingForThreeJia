@@ -83,8 +83,10 @@ wait(1)
 
 import legendQLib
 
-#打開BlueStack並開啟武俠Q傳
-legendQLib.loginGame()
+#打開BlueStack並開啟武俠Q傳, for MacOS
+legendQLib.loginGameOnMac()
+#windows 請mark掉上面一行, 改用下面這行, 並修正你的blueStacks的路徑
+#legendQLib.loginGameOnWindows("c:\\Program Files\\BlueStacks\\BlueStacks.exe")
 
 #第一次打血戰, 看能打到哪一關
 firstAttackingLevel = legendQLib.attackPagan(99999, 0, 0, 0)

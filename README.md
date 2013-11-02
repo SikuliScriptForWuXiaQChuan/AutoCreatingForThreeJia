@@ -122,13 +122,15 @@ protection()
 以上範例只能保護一次, 如需要無窮盡保護下去, 可以使用下面這個範例:
 
 ```
+import legendQLib
+
 while True:
     r = True
     while r:
-        r=tunLauNextStep()
-    enterAdventureMenu()
-    unlockProtection()  
-    protection()  
+        r=legendQLib.tunLauNextStep()
+    legendQLib.enterAdventureMenu()
+    legendQLib.unlockProtection()  
+    legendQLib.protection()  
 ```
 也可以使用`protectChildElder(times)`, times是指要保護童姥幾次.
 或是`allProtectAction`來無窮盡保護.

@@ -84,25 +84,24 @@ wait(1)
 import legendQLib
 
 #打開BlueStack並開啟武俠Q傳
-loginGame()
+legendQLib.loginGame()
 
 #第一次打血戰, 看能打到哪一關
-firstAttackingLevel = attackPagan(99999, 0, 0, 0)
+firstAttackingLevel = legendQLib.attackPagan(99999, 0, 0, 0)
 wait(1)
 
 #血戰關數減3
 bloodLevel = firstAttackingLevel - 3
 
 #承上, 打完血戰後打力戰, 看可以打到哪一關
-secondAttackingLevel = attackPagan(bloodLevel, 99999, 0, 0)
+secondAttackingLevel = legendQLib.attackPagan(bloodLevel, 99999, 0, 0)
 
 #力戰關數減3
 powerLevel = secondAttackingLevel - 3
 wait(1)
 
 #第三次打完血戰, 力戰後, 就無盡奮戰下去
-attackPagan(bloodLevel, powerLevel, 99999, 0)
-
+legendQLib.attackPagan(bloodLevel, powerLevel, 99999, 0)
 ```
 <br/>
 ###保護童姥

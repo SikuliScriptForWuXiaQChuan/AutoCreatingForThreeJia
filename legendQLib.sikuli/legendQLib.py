@@ -323,7 +323,7 @@ def loginGameOnMac():
     wait(3)
     AppRegion = Region(myApp.focusedWindow())
     AppRegion.setAutoWaitTimeout(10) 
-    #nterGame()
+    enterGame()
 
     return AppRegion
 
